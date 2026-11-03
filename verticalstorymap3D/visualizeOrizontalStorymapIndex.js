@@ -233,7 +233,7 @@ $.ajax({
 						if(result.events[i].hasOwnProperty('eventMediaCaption') && result.events[i].eventMediaCaption != ""){var mediaCaption = result.events[i].eventMediaCaption } else {var mediaCaption= ""}
 						
 						
-						var divImageStory= '<span class="imgContent"><a href="'+result.events[i].eventMedia+'" target="_blank"><img class="sectionImage" src="'+result.events[i].eventMedia+'"></a> </br><i>' + mediaCaption + '</i></span></br>'
+						var divImageStory= '<span class="imgContent"><a href="../'+result.events[i].eventMedia+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].eventMedia+'"></a> </br><i>' + mediaCaption + '</i></span></br>'
 						//divImageStory += "</br><i>" + mediaCaption + "</i>"
 					
 					}
@@ -244,7 +244,7 @@ $.ajax({
 					
 					var divImageStory="";
 					for(var iImg=0; iImg<result.events[i].eventMedia.length; iImg++){
-						divImageStory += '<span class="imgContent"><a href="'+result.events[i].eventMedia[iImg]+'" target="_blank"><img class="sectionImage" src="'+result.events[i].eventMedia[iImg]+'"></a> </br><i>' + result.events[i].eventMediaCaption[iImg] + '</i></span></br>'
+						divImageStory += '<span class="imgContent"><a href="../'+result.events[i].eventMedia[iImg]+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].eventMedia[iImg]+'"></a> </br><i>' + result.events[i].eventMediaCaption[iImg] + '</i></span></br>'
 						//divImageStory += "</br><i>" + result.events[i].eventMediaCaption[iImg] + "</i></br>"				
 					}
 				
@@ -261,7 +261,7 @@ $.ajax({
 				/////////////// Images in the old library (media.url)
 				} else if(result.events[i].hasOwnProperty('media') && result.events[i].media.url != "") {
 					
-					var divImageStory= '<span class="imgContent"><a href="'+result.events[i].media.url+'" target="_blank"><img class="sectionImage" src="'+result.events[i].media.url+'"></a></span>'
+					var divImageStory= '<span class="imgContent"><a href="../'+result.events[i].media.url+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].media.url+'"></a></span>'
 				
 				////////////// No Media event
 				} else {
