@@ -260,6 +260,8 @@ Il mapping verso la tabella PostgreSQL della nuova narrativa e':
 
 `slides` non viene importato perche' e' una copia degli eventi arricchita per la visualizzazione. La fonte canonica e' sempre `events`.
 
+Durante l'import, le entita' Wikidata il cui campo `type` contiene `Q15474042`, `Q4167836` o `Q186081` sono escluse dai record della nuova narrativa e rimosse da `props` degli eventi. Il testo descrittivo degli eventi e il JSON sorgente restano invariati.
+
 ### Subject Wikidata
 
 L'import cerca il subject in:
