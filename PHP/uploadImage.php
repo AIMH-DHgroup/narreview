@@ -5,7 +5,7 @@ ensure_session_started();
 require_login_user();
 require('PgConn.php');
 
-$imagesDir = images_storage_dir();
+$imagesDir =  images_storage_dir();
 
 $targetPath = rtrim($imagesDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . basename($_POST['fileName']);
 

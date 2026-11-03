@@ -9,6 +9,13 @@ var preview = url.searchParams.get("preview")
 var sketchfabApis = {};
 var map= L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 4);
 
+function resolveStorymapImageUrl(imageUrl) {
+	if (typeof imageUrl !== "string" || imageUrl === "") return imageUrl;
+
+	var relativePath = imageUrl.replace(/^\.\//, "");
+	return relativePath.indexOf("images/") === 0 ? "../" + relativePath : imageUrl;
+}
+
 function getAtonSID(atonId) {
 	if (!atonId) return "";
 	if (atonId.indexOf("/") !== -1) return atonId;
@@ -199,7 +206,7 @@ $.ajax({
 			$("#titleSlide").append(result.A1.name)
 			
 			if(result.A1.hasOwnProperty("coverImg")){
-			$("#scene1").attr("data-background", result.A1.coverImg);
+			$("#scene1").attr("data-background", resolveStorymapImageUrl(result.A1.coverImg));
 			}
 			
 
@@ -232,8 +239,9 @@ $.ajax({
 						//media caption
 						if(result.events[i].hasOwnProperty('eventMediaCaption') && result.events[i].eventMediaCaption != ""){var mediaCaption = result.events[i].eventMediaCaption } else {var mediaCaption= ""}
 						
+						var eventMediaUrl = resolveStorymapImageUrl(result.events[i].eventMedia);
 						
-						var divImageStory= '<span class="imgContent"><a href="../'+result.events[i].eventMedia+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].eventMedia+'"></a> </br><i>' + mediaCaption + '</i></span></br>'
+						var divImageStory= '<span class="imgContent"><a href="'+eventMediaUrl+'" target="_blank"><img class="sectionImage" src="'+eventMediaUrl+'"></a> </br><i>' + mediaCaption + '</i></span></br>'
 						//divImageStory += "</br><i>" + mediaCaption + "</i>"
 					
 					}
@@ -244,7 +252,8 @@ $.ajax({
 					
 					var divImageStory="";
 					for(var iImg=0; iImg<result.events[i].eventMedia.length; iImg++){
-						divImageStory += '<span class="imgContent"><a href="../'+result.events[i].eventMedia[iImg]+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].eventMedia[iImg]+'"></a> </br><i>' + result.events[i].eventMediaCaption[iImg] + '</i></span></br>'
+						var eventMediaUrl = resolveStorymapImageUrl(result.events[i].eventMedia[iImg]);
+						divImageStory += '<span class="imgContent"><a href="'+eventMediaUrl+'" target="_blank"><img class="sectionImage" src="'+eventMediaUrl+'"></a> </br><i>' + result.events[i].eventMediaCaption[iImg] + '</i></span></br>'
 						//divImageStory += "</br><i>" + result.events[i].eventMediaCaption[iImg] + "</i></br>"				
 					}
 				
@@ -261,7 +270,8 @@ $.ajax({
 				/////////////// Images in the old library (media.url)
 				} else if(result.events[i].hasOwnProperty('media') && result.events[i].media.url != "") {
 					
-					var divImageStory= '<span class="imgContent"><a href="../'+result.events[i].media.url+'" target="_blank"><img class="sectionImage" src="../'+result.events[i].media.url+'"></a></span>'
+					var mediaUrl = resolveStorymapImageUrl(result.events[i].media.url);
+					var divImageStory= '<span class="imgContent"><a href="'+mediaUrl+'" target="_blank"><img class="sectionImage" src="'+mediaUrl+'"></a></span>'
 				
 				////////////// No Media event
 				} else {
@@ -869,7 +879,7 @@ $.ajax({
 					var backgrImg= "../images/slideBlack.png"
 					
 				} else {
-					var backgrImg=result.events[i].backgroundImg
+					var backgrImg=resolveStorymapImageUrl(result.events[i].backgroundImg)
 				}
 							
 				// attach element (title, img, description...) to slide
@@ -1113,8 +1123,6 @@ $.ajax({
 
         return iframe.outerHTML
     }
-
-
 
 
 
