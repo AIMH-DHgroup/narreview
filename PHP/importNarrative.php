@@ -136,8 +136,45 @@ function normalize_import_map($objects, $kind) {
 	return $normalized;
 }
 
+function is_hidden_import_entity($entity) {
+	if (!isset($entity['type']) || !is_array($entity['type'])) {
+		return false;
+	}
+
+	foreach (array('Q15474042', 'Q4167836', 'Q186081') as $hiddenType) {
+		if (in_array($hiddenType, $entity['type'], true)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 $events = normalize_import_map($events, 'event');
 $entities = normalize_import_map($entities, 'entity');
+
+$hiddenEntityIds = array();
+foreach ($entities as $entityId => $entity) {
+	if (is_hidden_import_entity($entity)) {
+		$hiddenEntityIds[$entityId] = true;
+		unset($entities[$entityId]);
+	}
+}
+
+if (count($hiddenEntityIds) > 0) {
+	foreach ($events as &$event) {
+		if (!isset($event['props']) || !is_array($event['props'])) {
+			continue;
+		}
+
+		foreach ($event['props'] as $entityId => $prop) {
+			if (isset($hiddenEntityIds[$entityId])) {
+				unset($event['props'][$entityId]);
+			}
+		}
+	}
+	unset($event);
+}
 
 $title = isset($metadata['name']) ? trim((string) $metadata['name']) : '';
 if ($title === '') {
