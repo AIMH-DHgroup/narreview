@@ -1,0 +1,13 @@
+# 1. Ignore all images in folder
+images/*.jpg
+images/*.jpeg
+images/*.png
+images/*.gif
+
+# 2. Crea le eccezioni per i file specifici (usa il percorso relativo)
+!images/nasa.jpg
+!images/dolomiti.jpg
+!images/michelle.jpg
+!images/nasa.jpg
+!images/squid.jpg
+...
