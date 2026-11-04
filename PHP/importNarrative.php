@@ -28,9 +28,9 @@ if ($uploadedFile['error'] !== UPLOAD_ERR_OK) {
 	json_error_response($message);
 }
 
-$maxFileSize = 30 * 1024 * 1024;
+$maxFileSize = 50 * 1024 * 1024;
 if ((int) $uploadedFile['size'] <= 0 || (int) $uploadedFile['size'] > $maxFileSize) {
-	json_error_response('The JSON file must be between 1 byte and 30 MB');
+	json_error_response('The JSON file must be between 1 byte and 50 MB');
 }
 
 $json = file_get_contents($uploadedFile['tmp_name']);

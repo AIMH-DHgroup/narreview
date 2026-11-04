@@ -1876,6 +1876,11 @@ body .draggableEvent {
 	background-color: rgb(240, 240, 240);
 }
 
+#timeline .timelineEvent--current {
+	background-color: #fff1cc !important;
+	box-shadow: 0 0 0 4px rgba(255, 159, 28, 0.45);
+}
+
 #auth-div {
 	max-width: 340px;
 	min-height: 340px;
