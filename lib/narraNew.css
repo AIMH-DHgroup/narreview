@@ -2426,6 +2426,10 @@ h5 {
 	border: 1px solid rgb(237, 120, 106) !important;
 }
 
+#map-editor-group.has-error-map {
+	border: 1px solid rgb(237, 120, 106) !important;
+}
+
 .cc-window {
 	background-color: rgb(237, 120, 106) !important;
 	border: solid 3px rgb(237, 120, 106); 

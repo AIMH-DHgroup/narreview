@@ -1,0 +1,2203 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:ecrm="http://erlangen-crm.org/current/"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://erlangen-crm.org/current/">
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E21_Person">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P152_has_parent"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E39_Actor"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P98i_was_born"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E20_Biological_Object"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E21</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises real persons who live or are assumed to have lived.
+
+Legendary figures that may have existed, such as Ulysses and King Arthur, fall into this class if the documentation refers to them as historical figures. In cases where doubt exists as to whether several persons are in fact identical, multiple instances can be created and linked to indicate their relationship. The CRM does not propose a specific form to support reasoning about possible identity.
+
+Examples:
+- Tut-Ankh-Amun
+- Nelson Mandela
+
+In First Order Logic:
+E21(x) ⊃ E20(x)
+E21(x) ⊃ E39(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E21 Person</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E18_Physical_Thing">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E18</skos:notation>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    </owl:disjointWith>
+    <rdfs:label xml:lang="en">E18 Physical Thing</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P45_consists_of"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E57_Material"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E72_Legal_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises all persistent physical items with a relatively stable form, man-made or natural.
+
+Depending on the existence of natural boundaries of such things, the CRM distinguishes the instances of E19 Physical Object from instances of E26 Physical Feature, such as holes, rivers, pieces of land etc. Most instances of E19 Physical Object can be moved (if not too heavy), whereas features are integral to the surrounding matter.
+
+An instance of E18 Physical Thing occupies not only a particular geometric space, but in the course of its existence it also forms a trajectory through spacetime, which occupies a real, that is phenomenal, volume in spacetime. We include in the occupied space the space filled by the matter of the physical thing and all its inner spaces, such as the interior of a box. Physical things consisting of aggregations of physically unconnected objects, such as a set of chessmen, occupy a number of individually contiguous spacetime volumes equal to the number of unconnected objects that constitute the set.
+
+We model E18 Physical Thing to be a subclass of E72 Legal Object and of E92 Spacetime volume. The latter is intended as a phenomenal spacetime volume as defined in CRMgeo (Doerr and Hiebel 2013). By virtue of this multiple inheritance we can discuss the physical extent of an E18 Physical Thing without representing each instance of it together with an instance of its associated spacetime volume. This model combines two quite different kinds of substance: an instance of E18 Physical Thing is matter while a spacetime volume is an aggregation of points in spacetime. However, the real spatiotemporal extent of an instance of E18 Physical Thing is regarded to be unique to it, due to all its details and fuzziness; its identity and existence depends uniquely on the identity of the instance of E18 Physical Thing. Therefore this multiple inheritance is unambiguous and effective and furthermore corresponds to the intuitions of natural language.
+
+The CIDOC CRM is generally not concerned with amounts of matter in fluid or gaseous states.
+
+Examples:
+- the Cullinan Diamond (E19)
+- the cave "Ideon Andron" in Crete (E26)
+- the Mona Lisa (E22)
+
+In First Order Logic:
+E18(x) ⊃ E72(x)
+E18(x) ⊃ E92(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P13i_was_destroyed_by"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E92_Spacetime_Volume"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E53_Place"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P53_has_former_or_current_location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E90_Symbolic_Object">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E90</skos:notation>
+    <rdfs:label xml:lang="en">E90 Symbolic Object</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises identifiable symbols and any aggregation of symbols, such as characters, identifiers, traffic signs, emblems, texts, data sets, images, musical scores, multimedia objects, computer program code or mathematical formulae that have an objectively recognizable structure and that are documented as single units. 
+
+It includes sets of signs of any nature, which may serve to designate something, or to communicate some propositional content.
+
+An instance of E90 Symbolic Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously. An instance of E90 Symbolic Object may or may not have a specific meaning, for example an arbitrary character string. 
+
+In some cases, the content of an instance of E90 Symbolic Object may completely be represented by a serialized digital content model, such as a sequence of ASCII-encoded characters, an XML or HTML document, or a TIFF image. The property P3 has note allows for the description of this content model. In order to disambiguate which symbolic level is the carrier of the meaning, the property P3.1 has type can be used to specify the encoding (e.g. "bit", "Latin character", RGB pixel). 
+
+Examples:
+- 'ecognizabl' 
+- The "no-smoking" sign (E36) 
+- "BM000038850.JPG" (E75) 
+- image BM000038850.JPG from the Clayton Herbarium in London (E38) 
+- The distribution of form, tone and colour found on Leonardo da Vinci's painting named "Mona Lisa" in daylight (E38)
+- The Italian text of Dante's "Divina Commedia" as found in the authoritative critical edition La Commedia secondo l'antica vulgata a cura di Giorgio Petrocchi, Milano: Mondadori, 1966-67 (= Le Opere di Dante Alighieri, Edizione Nazionale a cura della Società Dantesca Italiana, VII, 1-4) (E33)
+
+In First Order Logic:
+E90(x) ⊃ E28(x)
+E90(x) ⊃ E72(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P106_is_composed_of"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E72_Legal_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E74_Group">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P107_has_current_or_former_member"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >0</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P146i_lost_member_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P95i_was_formed_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P144i_gained_member_by"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E39_Actor"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E74</skos:notation>
+    <rdfs:label xml:lang="en">E74 Group</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises any gatherings or organizations of E39 Actors that act collectively or in a similar way due to any form of unifying relationship. In the wider sense this class also comprises official positions which used to be regarded in certain contexts as one actor, independent of the current holder
+of the office, such as the president of a country. In such cases, it may happen that the Group never had more than one member. A joint pseudonym (i.e., a name that seems indicative of an individual but that is actually used as a persona by two or more people) is a particular case of E74 Group..
+
+A gathering of people becomes an E74 Group when it exhibits organizational characteristics usually typified by a set of ideas or beliefs held in common, or actions performed together. These might be communication, creating some common artifact, a common purpose such as study, worship, business, sports, etc. Nationality can be modelled as membership in an E74 Group (cf. HumanML markup). Married couples and other concepts of family are regarded as particular examples of E74 Group. 
+
+Examples:
+- the impressionists
+- the Navajo
+- the Greeks
+- the peace protestors in New York City on February 15 2003
+- Exxon-Mobil
+- King Solomon and his wives
+- the President of the Swiss Confederation
+- Nicolas Bourbaki 
+- Betty Crocker
+- Ellery Queen
+
+In First Order Logic:
+E74(x) ⊃ E39(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E5_Event">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises changes of states in cultural, social or physical systems, regardless of scale, brought about by a series or group of coherent physical, cultural, technological or legal phenomena. Such changes of state will affect instances of E77 Persistent Item or its subclasses.
+
+The distinction between an E5 Event and an E4 Period is partly a question of the scale of observation. Viewed at a coarse level of detail, an E5 Event is an 'instantaneous' change of state. At a fine level, the E5 Event can be analysed into its component phenomena within a space and time frame, and as such can be seen as an E4 Period. The reverse is not necessarily the case: not all instances of E4 Period give rise to a noteworthy change of state.
+
+Examples:
+- the birth of Cleopatra (E67)
+- the destruction of Herculaneum by volcanic eruption in 79 AD (E6)
+- World War II (E7)
+- the Battle of Stalingrad (E7)
+- the Yalta Conference (E7)
+- my birthday celebration 28-6-1995 (E7)
+- the falling of a tile from my roof last Sunday
+- the CIDOC Conference 2003 (E7)
+
+In First Order Logic:
+E5(x) ⊃ E4(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E5 Event</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E4_Period"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E5</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E70_Thing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E70</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This general class comprises discrete, identifiable, instances of E77 Persistent Item that are documented as single units, that either consist of matter or depend on being carried by matter and are characterized by relative stability. 
+
+They may be intellectual products or physical things. They may for instance have a solid physical form, an electronic encoding, or they may be a logical concept or structure.
+
+Examples:
+- my photograph collection (E78)
+- the bottle of milk in my refrigerator (E22)
+- the plan of the Strassburger Muenster (E29)
+- the thing on the top of Otto Hahn's desk (E19)
+- the form of the no-smoking sign (E36)
+- the cave of Dirou, Mani, Greece (E27)
+
+In First Order Logic:
+E70(x) ⊃ E77(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E70 Thing</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E9_Move">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E9</skos:notation>
+    <rdfs:label xml:lang="en">E9 Move</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises changes of the physical location of the instances of E19 Physical Object.
+
+Note, that the class E9 Move inherits the property P7 took place at (witnessed): E53 Place. Moves may also be documented to consist of other moves (via P9 consists of (forms part of)), in order to describe intermediate stages on a trajectory. In that case, start and end points of the partial moves should match appropriately between each other and with the overall event.
+
+Examples:
+- the relocation of London Bridge from the UK to the USA
+- the movement of the exhibition "Treasures of Tut-Ankh-Amun" 1976-1979
+
+In First Order Logic:
+E9(x) ⊃ E7(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E4_Period">
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E92_Spacetime_Volume"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E53_Place"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P7_took_place_at"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E4</skos:notation>
+    <rdfs:label xml:lang="en">E4 Period</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises sets of coherent phenomena or cultural manifestations occurring in time and space.
+
+It is the social or physical coherence of these phenomena that identify an E4 Period and not the associated spatiotemporal extent. This extent is only the “ground” or space in an abstract physical sense that the actual process of growth, spread and retreat has covered. Consequently, different periods can overlap and coexist in time and space, such as when a nomadic culture exists in the same area and time as a sedentary culture. This also means that overlapping land use rights, common among first nations, amounts to overlapping periods.
+
+Often, this class is used to describe prehistoric or historic periods such as the “Neolithic Period”, the “Ming Dynasty” or the “McCarthy Era”, but also geopolitical units and activities of settlements are regarded as special cases of E4 Period. However, there are no assumptions about the scale of the associated phenomena. In particular all events are seen as synthetic processes consisting of coherent phenomena. Therefore E4 Period is a superclass of E5 Event. For example, a modern clinical E67 Birth can be seen as both an atomic E5 Event and as an E4 Period that consists of multiple activities performed by multiple instances of E39 Actor.
+
+As the actual extent of an E4 Period in spacetime we regard the trajectories of the participating physical things during their participation in an instance of E4 Period. This includes the open spaces via which these things have interacted and the spaces by which they had the potential to interact during that period or event in the way defined by the type of the respective period or event. Examples include the air in a meeting room transferring the voices of the participants. Since these phenomena are fuzzy, we assume the spatiotemporal extent to be contiguous, except for cases of phenomena spreading out over islands or other separated areas, including geopolitical units distributed over disconnected areas such as islands or colonies.
+
+Whether the trajectories necessary for participants to travel between these areas are regarded as part of the spatiotemporal extent or not has to be decided in each case based on a concrete analysis, taking use of the sea for other purposes than travel, such as fishing, into consideration. One may also argue that the activities to govern disconnected areas imply travelling through spaces connecting them and that these areas hence are spatially connected in a way, but it appears counterintuitive to consider for instance travel routes in international waters as extensions of geopolitical units.
+
+Consequently, an instance of E4 Period may occupy a number of disjoint spacetime volumes, however there must not be a discontinuity in the timespan covered by these spacetime volumes. This means that an instance of E4 Period must be contiguous in time. If it has ended in all areas, it has ended as a whole. However it may end in one area before another, such as in the Polynesian migration, and it continues as long as it is ongoing in at least one area.
+
+We model E4 Period as a subclass of E2 Temporal Entity and of E92 Spacetime volume. The latter is intended as a phenomenal spacetime volume as defined in CRMgeo (Doerr and Hiebel 2013). By virtue of this multiple inheritance we can discuss the physical extent of an E4 Period without representing each instance of it together with an instance of its associated spacetime volume. This model combines two quite different kinds of substance: an instance of E4 Period is a phenomena while a spacetime volume is an aggregation of points in spacetime. However, the real spatiotemporal extent of an instance of E4 Period is regarded to be unique to it due to all its details and fuzziness; its identity and existence depends uniquely on the identity of the instance of E4 Period. Therefore this multiple inheritance is unambiguous and effective and furthermore corresponds to the intuitions of natural language.
+
+There are two different conceptualisations of ‘artistic style’, defined either by physical features or by historical context. For example, “Impressionism” can be viewed as a period lasting from approximately 1870 to 1905 during which paintings with particular characteristics were produced by a group of artists that included (among others) Monet, Renoir, Pissarro, Sisley and Degas. Alternatively, it can be regarded as a style applicable to all paintings sharing the characteristics of the works produced by the Impressionist painters, regardless of historical context. The first interpretation is an instance of E4 Period, and the second defines morphological object types that fall under E55 Type.
+
+Another specific case of an E4 Period is the set of activities and phenomena associated with a settlement, such as the populated period of Nineveh.
+
+Examples:
+Jurassic
+European Bronze Age
+Italian Renaissance
+Thirty Years War
+Sturm und Drang
+Cubism
+
+In First Order Logic: 
+E4(x) ⊃ E2(x)
+E4(x) ⊃ E92(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E81_Transformation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P123_resulted_in"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P124_transformed"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E64_End_of_Existence"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the events that result in the simultaneous destruction of one or more than one E77 Persistent Item and the creation of one or more than one E77 Persistent Item that preserves recognizable substance from the first one(s) but has fundamentally different nature and identity.
+
+Although the old and the new instances of E77 Persistent Item are treated as discrete entities having separate, unique identities, they are causally connected through the E81 Transformation; the destruction of the old E77 Persistent Item(s) directly causes the creation of the new one(s) using or preserving some relevant substance. Instances of E81 Transformation are therefore distinct from re-classifications (documented using E17 Type Assignment) or modifications (documented using E11 Modification) of objects that do not fundamentally change their nature or identity. Characteristic cases are reconstructions and repurposing of historical buildings or ruins, fires leaving buildings in ruins, taxidermy of specimen in natural history and the reorganization of a corporate body into a new one.
+
+Examples:
+- the death and mummification of Tut-Ankh-Amun (transformation of Tut-Ankh-Amun from a living person to a mummy) (E69,E81,E7)
+
+In First Order Logic:
+E81(x) ⊃ E63(x)
+E81(x) ⊃ E64(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E81 Transformation</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E81</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E86_Leaving">
+    <rdfs:label xml:lang="en">E86 Leaving</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E86</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P146_separated_from"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P145_separated"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the activities that result in an instance of E39 Actor to be disassociated from an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
+
+Typical scenarios include the termination of membership in a social organisation, ending the employment at a company, divorce, and the end of tenure of somebody in an official position.
+
+Examples:
+- The end of Sir Isaac Newton's duty as Member of Parliament for the University of Cambridge to the Convention Parliament in 1702
+- George Washington's leaving office in 1797
+- The implementation of the treaty regulating the termination of Greenland’s membership in EU between EU, Denmark and Greenland February 1. 1985
+
+In First Order Logic:
+E86(x) ⊃ E7(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E66_Formation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E74_Group"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P95_has_formed"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E66</skos:notation>
+    <rdfs:label xml:lang="en">E66 Formation</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note: 
+This class comprises events that result in the formation of a formal or informal E74 Group of people,
+such as a club, society, association, corporation or nation.
+
+E66 Formation does not include the arbitrary aggregation of people who do not act as a collective.
+The formation of an instance of E74 Group does not require that the group is populated with members
+at the time of formation. In order to express the joining of members at the time of formation, the
+respective activity should be simultaneously an instance of both E66 Formation and E85 Joining.
+
+Examples:
+ the formation of the CIDOC CRM Special Interest Group
+ the formation of the Soviet Union
+ the conspiring of the murderers of Caesar
+
+In First Order Logic:
+E66(x) ⊃ E7(x)
+E66(x) ⊃ E63(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E64_End_of_Existence">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E64</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P93_took_out_of_existence"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+    <rdfs:label xml:lang="en">E64 End of Existence</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises events that end the existence of any E77 Persistent Item.
+
+It may be used for temporal reasoning about things (physical items, groups of people, living beings) ceasing to exist; it serves as a hook for determination of a terminus postquem and antequem. In cases where substance from a Persistent Item continues to exist in a new form, the process would be documented by E81 Transformation.
+
+Examples:
+- the death of Snoopy, my dog
+- the melting of the snowman
+- the burning of the Temple of Artemis in Ephesos by Herostratos in 356BC
+
+In First Order Logic:
+E64(x) ⊃ E5(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E12_Production">
+    <rdfs:label xml:lang="en">E12 Production</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E12</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises activities that are designed to, and succeed in, creating one or more new items.
+
+It specializes the notion of modification into production. The decision as to whether or not an object is regarded as new is context sensitive. Normally, items are considered "new" if there is no obvious overall similarity between them and the consumed items and material used in their production. In other cases, an item is considered "new" because it becomes relevant to documentation by a modification. For example, the scribbling of a name on a potsherd may make it a voting token. The original potsherd may not be worth documenting, in contrast to the inscribed one.
+
+This entity can be collective: the printing of a thousand books, for example, would normally be considered a single event.
+
+An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities and matter is preserved, but identity is not.
+
+Examples:
+- the construction of the SS Great Britain
+- the first casting of the Little Mermaid from the harbour of Copenhagen
+- Rembrandt's creating of the seventh state of his etching "Woman sitting half dressed beside a stove", 1658, identified by Bartsch Number 197 (E12,E65,E81)
+
+In First Order Logic:
+E12(x) ⊃ E11(x)
+E12(x) ⊃ E63(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P108_has_produced"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E11_Modification"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E89_Propositional_Object">
+    <rdfs:label xml:lang="en">E89 Propositional Object</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises immaterial items, including but not limited to stories, plots, procedural prescriptions, algorithms, laws of physics or images that are, or represent in some sense, sets of propositions about real or imaginary things and that are documented as single units or serve as topic of discourse.
+
+This class also comprises items that are "about" something in the sense of a subject. In the wider sense, this class includes expressions of psychological value such as non-figural art and musical themes. However, conceptual items such as types and classes are not instances of E89 Propositional Object. This should not be confused with the definition of a type, which is indeed an instance of E89 Propositional Object.
+
+Examples:
+- Maxwell's Equations
+- The ideational contents of Aristotle's book entitled 'Metaphysics' as rendered in the Greek texts translated in … Oxford edition…
+- The underlying prototype of any "no-smoking" sign (E36)
+- The common ideas of the plots of the movie "The Seven Samurai" by Akira Kurosawa and the movie "The Magnificent Seven" by John Sturges
+- The image content of the photo of the Allied Leaders at Yalta published by UPI, 1945 (E38)
+
+In First Order Logic:
+E89(x) ⊃ E28(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P67i_is_referred_to_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P129i_is_subject_of"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P148_has_component"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E89</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E65_Creation">
+    <rdfs:label xml:lang="en">E65 Creation</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E65</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises events that result in the creation of conceptual items or immaterial products, such as legends, poems, texts, music, images, movies, laws, types etc.
+
+Examples:
+- the framing of the U.S. Constitution
+- the drafting of U.N. resolution 1441
+
+In First Order Logic:
+E65(x) ⊃ E7(x)
+E65(x) ⊃ E63(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P94_has_created"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E63_Beginning_of_Existence">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E63</skos:notation>
+    <rdfs:label xml:lang="en">E63 Beginning of Existence</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises events that bring into existence any E77 Persistent Item.
+
+It may be used for temporal reasoning about things (intellectual products, physical items, groups of people, living beings) beginning to exist; it serves as a hook for determination of a terminus post quem and ante quem.
+
+Examples:
+- the birth of my child
+- the birth of Snoopy, my dog
+- the calving of the iceberg that sank the Titanic
+- the construction of the Eiffel Tower
+
+In First Order Logic:
+E63(x) ⊃ E5(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92_brought_into_existence"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E1_CRM_Entity">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P48_has_preferred_identifier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment xml:lang="en">Scope note:	
+This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model. 
+
+It is an abstract concept providing for three general properties:
+1.Identification by name or appellation, and in particular by a preferred identifier
+2.Classification by type, allowing further refinement of the specific subclass an instance belongs to 
+3.Attachment of free text for the expression of anything not captured by formal properties
+
+With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity. 
+
+Examples:
+the earthquake in Lisbon 1755 (E5)
+
+In First Order Logic: 
+E1(x)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E1</skos:notation>
+    <rdfs:label xml:lang="en">E1 CRM Entity</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E39_Actor">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises people, either individually or in groups, who have the potential to perform intentional actions of kinds for which someone may be held responsible.
+
+The CRM does not attempt to model the inadvertent actions of such actors. Individual people should be documented as instances of E21 Person, whereas groups should be documented as instances of either E74 Group or its subclass E40 Legal Body.
+
+Examples:
+- London and Continental Railways (E40)
+- the Governor of the Bank of England in 1975 (E21)
+- Sir Ian McKellan (E21)
+
+In First Order Logic:
+E39(x) ⊃ E77(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E39 Actor</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E39</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E68_Dissolution">
+    <rdfs:label xml:lang="en">E68 Dissolution</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E68</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the events that result in the formal or informal termination of an E74 Group of people.
+
+If the dissolution was deliberate, the Dissolution event should also be instantiated as an E7 Activity.
+
+Examples:
+- the fall of the Roman Empire
+- the liquidation of Enron Corporation
+
+In First Order Logic:
+E68(x) ⊃ E64(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P99_dissolved"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E74_Group"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E64_End_of_Existence"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E8_Acquisition">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E8</skos:notation>
+    <rdfs:label xml:lang="en">E8 Acquisition</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P24_transferred_title_of"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises transfers of legal ownership from one or more instances of E39 Actor to one or more other instances of E39 Actor.
+
+The class also applies to the establishment or loss of ownership of instances of E18 Physical Thing. It does not, however, imply changes of any other kinds of right. The recording of the donor and/or recipient is optional. It is possible that in an instance of E8 Acquisition there is either no donor or no recipient. Depending on the circumstances, it may describe:
+
+1. the beginning of ownership
+2. the end of ownership
+3. the transfer of ownership
+4. the acquisition from an unknown source
+5. the loss of title due to destruction of the item
+
+It may also describe events where a collector appropriates legal title, for example by annexation or field collection. The interpretation of the museum notion of "accession" differs between institutions. The CRM therefore models legal ownership (E8 Acquisition) and physical custody (E10 Transfer of Custody) separately. Institutions will then model their specific notions of accession and deaccession as combinations of these.
+
+Examples:
+- the collection of a hammer-head shark of the genus Sphyrna (Carchariniformes) XXXtbc by John Steinbeck and Edward Ricketts at Puerto Escondido in the Gulf of Mexico on March 25th, 1940
+- the acquisition of El Greco's "The Apostles Peter and Paul" by the State Hermitage in Saint Petersburg
+- the loss of my stuffed chaffinch 'Fringilla coelebs Linnaeus, 1758' due to insect damage last year
+
+In First Order Logic:
+E8(x) ⊃ E7(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E77_Persistent_Item">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises items that have a persistent identity, sometimes known as "endurants" in philosophy.
+
+They can be repeatedly recognized within the duration of their existence by identity criteria rather than by continuity or observation. Persistent Items can be either physical entities, such as people, animals or things, or conceptual entities such as ideas, concepts, products of the imagination or common names. 
+
+The criteria that determine the identity of an item are often difficult to establish -; the decision depends largely on the judgement of the observer. For example, a building is regarded as no longer existing if it is dismantled and the materials reused in a different configuration. On the other hand, human beings go through radical and profound changes during their life-span, affecting both material composition and form, yet preserve their identity by other criteria. Similarly, inanimate objects may be subject to exchange of parts and matter. The class E77 Persistent Item does not take any position about the nature of the applicable identity criteria and if actual knowledge about identity of an instance of this class exists. There may be cases, where the identity of an E77 Persistent Item is not decidable by a certain state of knowledge.
+The main classes of objects that fall outside the scope the E77 Persistent Item class are temporal objects such as periods, events and acts, and descriptive properties.
+
+Examples:
+- Leonardo da Vinci
+- Stonehenge
+- the hole in the ozone layer
+- the First Law of Thermodynamics
+- the Bermuda Triangle
+
+In First Order Logic:
+E77(x) ⊃ E1(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E77 Persistent Item</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E77</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E19_Physical_Object">
+    <rdfs:label xml:lang="en">E19 Physical Object</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E19</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P54_has_current_permanent_location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P55_has_current_location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises items of a material nature that are units for documentation and have physical boundaries that separate them completely in an objective way from other objects.
+
+The class also includes all aggregates of objects made for functional purposes of whatever kind, independent of physical coherence, such as a set of chessmen. Typically, instances of E19 Physical Object can be moved (if not too heavy).
+
+In some contexts, such objects, except for aggregates, are also called "bona fide objects" (Smith &amp; Varzi, 2000, pp.401-420), i.e. naturally defined objects.
+
+The decision as to what is documented as a complete item, rather than by its parts or components, may be a purely administrative decision or may be a result of the order in which the item was acquired.
+
+Examples:
+- John Smith
+- Aphrodite of Milos
+- the Palace of Knossos
+- the Cullinan diamond
+- Apollo 13 at the time of launch
+
+In First Order Logic:
+E19(x) ⊃ E18(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E71_Man-Made_Thing">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises discrete, identifiable man-made items that are documented as single units.
+
+These items are either intellectual products or man-made physical things, and are characterized by relative stability. They may for instance have a solid physical form, an electronic encoding, or they may be logical concepts or structures.
+
+Examples:
+- Beethoven's 5th Symphony (E73)
+- Michelangelo's David
+- Einstein's Theory of General Relativity (E73)
+- the taxon 'Fringilla coelebs Linnaeus, 1758' (E55)
+
+In First Order Logic:
+E71(x) ⊃ E70(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E71 Man-Made Thing</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E71</skos:notation>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E70_Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E52_Time-Span">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises abstract temporal extents, in the sense of Galilean physics, having a beginning, an end and a duration.
+
+Time Span has no other semantic connotations. Time-Spans are used to define the temporal extent of instances of E4 Period, E5 Event and any other phenomena valid for a certain time. An E52 Time-Span may be identified by one or more instances of E49 Time Appellation.
+
+Since our knowledge of history is imperfect, instances of E52 Time-Span can best be considered as approximations of the actual Time-Spans of temporal entities. The properties of E52 Time-Span are intended to allow these approximations to be expressed precisely.  An extreme case of approximation, might, for example, define an E52 Time-Span having unknown beginning, end and duration. Used as a common E52 Time-Span for two events, it would nevertheless define them as being simultaneous, even if nothing else was known.
+
+Automatic processing and querying of instances of E52 Time-Span is facilitated if data can be parsed into an E61 Time Primitive.
+
+Examples:
+- 1961
+- from 12-17-1993 to 12-8-1996
+- 14h30 - 16h22 4th July 1945
+- 9.30 am 1.1.1999 to 2.00 pm 1.1.1999
+- duration of the Ming Dynasty
+
+In First Order Logic:
+E52(x) ⊃ E1(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E52 Time-Span</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P4i_is_time-span_of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P84_had_at_most_duration"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P83_had_at_least_duration"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E52</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E7_Activity">
+    <rdfs:label xml:lang="en">E7 Activity</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E7</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises actions intentionally carried out by instances of E39 Actor that result in changes of state in the cultural, social, or physical systems documented.
+
+This notion includes complex, composite and long-lasting actions such as the building of a settlement or a war, as well as simple, short-lived actions such as the opening of a door.
+
+Examples:
+- the Battle of Stalingrad
+- the Yalta Conference
+- my birthday celebration 28-6-1995
+- the writing of "Faust" by Goethe (E65)
+- the formation of the Bauhaus 1919 (E66)
+- calling the place identified by TGN '7017998' 'Quyunjig' by the people of Iraq
+- Kira Weber working in glass art from 1984 to 1993
+- Kira Weber working in oil and pastel painting from 1993
+
+In First Order Logic:
+E7(x) ⊃ E5(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E39_Actor"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P14_carried_out_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E69_Death">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E69</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P100_was_death_of"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E21_Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E64_End_of_Existence"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the deaths of human beings.
+If a person is killed, their death should be instantiated as E69 Death and as E7 Activity. The death or perishing of other living beings should be documented using E64 End of Existence.
+
+Examples:
+- the murder of Julius Caesar (E69,E7)
+- the death of Senator Paul Wellstone
+
+In First Order Logic:
+E69(x) ⊃ E64(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E69 Death</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E72_Legal_Object">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E39_Actor"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P105_right_held_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E30_Right"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P104_is_subject_to"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E70_Thing"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises those material or immaterial items to which instances of E30 Right, such as the right of ownership or use, can be applied.
+
+This is true for all E18 Physical Thing. In the case of instances of E28 Conceptual Object, however, the identity of the E28 Conceptual Object or the method of its use may be too ambiguous to reliably establish instances of E30 Right, as in the case of taxa and inspirations. Ownership of corporations is currently regarded as out of scope of the CRM.
+
+Examples:
+- the Cullinan diamond (E19)
+- definition of the CIDOC Conceptual Reference Model Version 2.1 (E73)
+
+In First Order Logic:
+E72(x) ⊃ E70(x)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E72</skos:notation>
+    <rdfs:label xml:lang="en">E72 Legal Object</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E80_Part_Removal">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P113_removed"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P112_diminished"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E11_Modification"/>
+    </rdfs:subClassOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E80</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the activities that result in an instance of E18 Physical Thing being decreased by the removal of a part.
+
+Typical scenarios include the detachment of an accessory, the removal of a component or part of a composite object, or the deaccessioning of an object from a curated E78 Collection. If the E80 Part Removal results in the total decomposition of the original object into pieces, such that the whole ceases to exist, the activity should instead be modelled as an E81 Transformation, i.e. a simultaneous destruction and production. In cases where the part removed has no discernible identity prior to its removal but does have an identity subsequent to its removal, the activity should be regarded as both E80 Part Removal and E12 Production. This class of activities forms a basis for reasoning about the history, and continuity of identity over time, of objects that are removed from other objects, such as precious gemstones being extracted from different items of jewelry, or cultural artifacts being deaccessioned from different museum collections over their lifespan.
+
+Examples:
+- the removal of the engine from my car
+- the disposal of object number 1976:234 from the collection
+
+In First Order Logic:
+E80(x) ⊃ E11(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E80 Part Removal</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E79_Part_Addition">
+    <rdfs:label xml:lang="en">E79 Part Addition</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises activities that result in an instance of E24 Physical Man-Made Thing being increased, enlarged or augmented by the addition of a part.
+
+Typical scenarios include the attachment of an accessory, the integration of a component, the addition of an element to an aggregate object, or the accessioning of an object into a curated E78 Collection. Objects to which parts are added are, by definition, man-made, since the addition of a part implies a human activity. Following the addition of parts, the resulting man-made assemblages are treated objectively as single identifiable wholes, made up of constituent or component parts bound together either physically (for example the engine becoming a part of the car), or by sharing a common purpose (such as the 32 chess pieces that make up a chess set). This class of activities forms a basis for reasoning about the history and continuity of identity of objects that are integrated into other objects over time, such as precious gemstones being repeatedly incorporated into different items of jewellery, or cultural artifacts being added to different museum instances of E78 Collection over their lifespan.
+
+Examples:
+- the setting of the koh-i-noor diamond into the crown of Queen Elizabeth the Queen Mother
+- the addition of the painting "Room in Brooklyn" by Edward Hopper to the collection of the Museum of Fine Arts, Boston
+
+In First Order Logic:
+E79(x) ⊃ E11(x)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E79</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P111_added"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P110_augmented"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E11_Modification"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E11_Modification">
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E7_Activity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://erlangen-crm.org/current/E24_Physical_Man-Made_Thing"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P31_has_modified"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises all instances of E7 Activity that create, alter or change E24 Physical Man-Made Thing.
+
+This class includes the production of an item from raw materials, and other so far undocumented objects, and the preventive treatment or restoration of an object for conservation.
+
+Since the distinction between modification and production is not always clear, modification is regarded as the more generally applicable concept. This implies that some items may be consumed or destroyed in a Modification, and that others may be produced as a result of it. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the originals. In this case, the new items have separate identities.
+
+If the instance of the E29 Design or Procedure utilized for the modification prescribes the use of specific materials, they should be documented using property P68 foresees use of (use foreseen by): E57 Material of E29 Design or Procedure, rather than via P126 employed (was employed in): E57 Material.
+
+Examples:
+- the construction of the SS Great Britain (E12)
+- the impregnation of the Vasa warship in Stockholm for preservation after 1956
+- the transformation of the Enola Gay into a museum exhibit by the National Air and Space Museum in Washington DC between 1993 and 1995 (E12, E81)
+- the last renewal of the gold coating of the Toshogu shrine in Nikko, Japan
+
+In First Order Logic:
+E11(x) ⊃ E7(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E11 Modification</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E11</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E55_Type">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises concepts denoted by terms from thesauri and controlled vocabularies used to characterize and classify instances of CRM classes. Instances of E55 Type represent concepts  in contrast to instances of E41 Appellation which are used to name instances of CRM classes.
+
+E55 Type is the CRM's interface to domain specific ontologies and thesauri. These can be represented in the CRM as subclasses of E55 Type, forming hierarchies of terms, i.e. instances of E55 Type linked via P127 has broader  term (has narrower term). Such hierarchies may be extended with additional properties.
+
+Examples:
+- weight, length, depth [types of E54]
+- portrait, sketch, animation [types of E38]
+- French, English, German [E56]
+- excellent, good, poor [types of E3]
+- Ford Model T, chop stick [types of E22]
+- cave, doline, scratch [types of E26]
+- poem, short story [types of E33]
+- wedding, earthquake, skirmish [types of E5]
+
+In First Order Logic:
+E55(x) ⊃ E28(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P135i_was_created_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">E55 Type</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E55</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E85_Joining">
+    <rdfs:label xml:lang="en">E85 Joining</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E85</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P144_joined_with"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P143_joined"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E7_Activity"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the activities that result in an instance of E39 Actor becoming a member of an instance of E74 Group. This class does not imply initiative by either party. It may be the initiative of a third party.
+
+Typical scenarios include becoming a member of a social organisation, becoming employee of a company, marriage, the adoption of a child by a family and the inauguration of somebody into an official position.
+
+Examples:
+- The election of Sir Isaac Newton as Member of Parliament for the University of Cambridge to the Convention Parliament of 1689
+- The inauguration of Mikhail Sergeyevich Gorbachev as leader of the Union of Soviet Socialist Republics (USSR) in 1985
+- The implementation of the membership treaty between EU and Denmark  January 1. 1973
+
+In First Order Logic:
+E85(x) ⊃ E7(x)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E20_Biological_Object">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises individual items of a material nature, which live, have lived or are natural products of or from living organisms.
+
+Artificial objects that incorporate biological elements, such as Victorian butterfly frames, can be documented as both instances of E20 Biological Object and E22 Man-Made Object.
+
+Examples:
+- me
+- Tut-Ankh-Amun
+- Boukephalas [Horse of Alexander the Great]
+- petrified dinosaur excrement PA1906-344
+
+In First Order Logic:
+E20(x) ⊃ E19(x)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E19_Physical_Object"/>
+    <rdfs:label xml:lang="en">E20 Biological Object</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E20</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E28_Conceptual_Object">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E28</skos:notation>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P94i_was_created_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E65_Creation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E71_Man-Made_Thing"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises non-material products of our minds and other human produced data that have become objects of a discourse about their identity, circumstances of creation or historical implication. The production of such information may have been supported by the use of technical devices such as cameras or computers.
+
+Characteristically, instances of this class are created, invented or thought by someone, and then may be documented or communicated between persons. Instances of E28 Conceptual Object have the ability to exist on more than one particular carrier at the same time, such as paper, electronic signals, marks, audio media, paintings, photos, human memories, etc.
+They cannot be destroyed. They exist as long as they can be found on at least one carrier or in at least one human memory. Their existence ends when the last carrier and the last memory are lost.
+
+Examples:
+- Beethoven's "Ode an die Freude" (Ode to Joy) (E73)
+- the definition of "ontology" in the Oxford English Dictionary
+- the knowledge about the victory at Marathon carried by the famous runner
+- 'Maxwell equations' [preferred subject access point from LCSH,
+ http://lccn.loc.gov/sh85082387, as of 19 November 2012]
+- 'Equations, Maxwell' [variant subject access point, from the same source]
+
+In First Order Logic:
+E28(x) ⊃ E71(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E28 Conceptual Object</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E73_Information_Object">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E73</skos:notation>
+    <rdfs:label xml:lang="en">E73 Information Object</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises identifiable immaterial items, such as a poems, jokes, data sets, images, texts, multimedia objects, procedural prescriptions, computer program code, algorithm or mathematical formulae, that have an objectively recognizable structure and are documented as single units.
+The encoding structure known as a "named graph" also falls under this class, so that each "named graph" is an instance of an E73 Information Object.
+
+An E73 Information Object does not depend on a specific physical carrier, which can include human memory, and it can exist on one or more carriers simultaneously.
+Instances of E73 Information Object of a linguistic nature should be declared as instances of the E33 Linguistic Object subclass. Instances of E73 Information Object of a documentary nature should be declared as instances of the E31 Document subclass. Conceptual items such as types and classes are not instances of E73 Information Object, nor are ideas without a reproducible expression.
+
+Examples:
+- image BM000038850.JPG from the Clayton Herbarium in London
+- E. A. Poe's "The Raven"
+- the movie "The Seven Samurai" by Akira Kurosawa
+- the Maxwell Equations
+- The Getty AAT as published as Linked Open Data, accessed 1/10/2014
+
+In First Order Logic: 
+E73(x) ⊃ E89(x)  
+E73(x) ⊃ E90(x)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E2_Temporal_Entity">
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises all phenomena, such as the instances of E4 Periods, E5 Events and states, which happen over a limited extent in time. This extent in time must be contiguous, i.e., without gaps. In case the defining kinds of phenomena for an instance of E2 Temporal Entity cease to happen, and occur later again at another time, we regard that the former E2 Temporal Entity has ended and a new instance has come into existence. In more intuitive terms, the same event cannot happen twice.
+
+In some contexts, these are also called perdurants. This class is disjoint from E77 Persistent Item. This is an abstract class and has no direct instances. E2 Temporal Entity is specialized into E4 Period, which applies to a particular geographic area (defined with a greater or lesser degree of precision), and E3 Condition State, which applies to instances of E18 Physical Thing.
+
+Examples:
+- Bronze Age (E4)
+- the earthquake in Lisbon 1755 (E5)
+- the Peterhof Palace near Saint Petersburg being in ruins from 1944 – 1946 (E3)
+
+In First Order Logic:
+E2(x) ⊃ E1(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P4_has_time-span"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <owl:disjointWith rdf:resource="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E2</skos:notation>
+    <rdfs:label xml:lang="en">E2 Temporal Entity</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E67_Birth">
+    <rdfs:label xml:lang="en">E67 Birth</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the births of human beings. E67 Birth is a biological event focussing on the context of people coming into life. (E63 Beginning of Existence comprises the coming into life of any living beings).
+
+Twins, triplets etc. are brought into life by the same E67 Birth event. The introduction of the E67 Birth event as a documentation element allows the description of a range of family relationships in a simple model. Suitable extensions may describe more details and the complexity of motherhood with the intervention of modern medicine. In this model, the biological father is not seen as a necessary participant in the E67 Birth event.
+
+Examples:
+- the birth of Alexander the Great
+
+In First Order Logic:
+E67(x) ⊃ E63(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E21_Person"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P96_by_mother"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P97_from_father"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E21_Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E67</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E41_Appellation">
+    <rdfs:label xml:lang="en">E41 Appellation</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises signs, either meaningful or not, or arrangements of signs following a specific syntax, that are used or can be used to refer to and identify a specific instance of some class or category within a certain context. 
+
+Instances of E41 Appellation do not identify things by their meaning, even if they happen to have one, but instead by convention, tradition, or agreement. Instances of E41 Appellation are cultural constructs; as such, they have a context, a history, and a use in time and space by some group of users. A given instance of E41 Appellation can have alternative forms, i.e., other instances of E41 Appellation that are always regarded as equivalent independent from the thing it denotes. 
+
+Specific subclasses of E41 Appellation should be used when instances of E41 Appellation of a characteristic form are used for particular objects. Instances of E49 Time Appellation, for example, which take the form of instances of E50 Date, can be easily recognised.
+
+E41 Appellation should not be confused with the act of naming something. Cf. E15 Identifier Assignment 
+
+Examples:
+- "Martin" 
+- "the Forth Bridge"
+- "the Merchant of Venice" (E35)
+- "Spigelia marilandica (L.) L." [not the species, just the name]
+- "information science" [not the science itself, but the name through which we refer to it in an English-speaking context] 
+- “安” [Chinese "an", meaning "peace"]
+
+In First Order Logic:
+E41(x) ⊃ E90(x)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E41</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E53_Place">
+    <rdfs:label xml:lang="en">E53 Place</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises extents in space, in particular on the surface of the earth, in the pure sense of physics: independent from temporal phenomena and matter.
+
+The instances of E53 Place are usually determined by reference to the position of "immobile" objects such as buildings, cities, mountains, rivers, or dedicated geodetic marks. A Place can be determined by combining a frame of reference and a location with respect to this frame. It may be identified by one or more instances of E44 Place Appellation.
+
+It is sometimes argued that instances of E53 Place are best identified by global coordinates or absolute reference systems. However, relative references are often more relevant in the context of cultural documentation and tend to be more precise. In particular, we are often interested in position in relation to large, mobile objects, such as ships. For example, the Place at which Nelson died is known with reference to a large mobile object – H.M.S Victory. A resolution of this Place in terms of absolute coordinates would require knowledge of the movements of the vessel and the precise time of death, either of which may be revised, and the result would lack historical and cultural relevance.
+
+Any object can serve as a frame of reference for E53 Place determination. The model foresees the notion of a "section" of an E19 Physical Object as a valid E53 Place determination.
+
+Examples:
+- the extent of the UK in the year 2003
+- the position of the hallmark on the inside of my wedding ring
+- the place referred to in the phrase: "Fish collected at three miles north of the confluence of the Arve and the Rhone"
+- here -&gt; &lt;-
+
+In First Order Logic:
+E53(x) ⊃ E1(x)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P59i_is_located_on_or_within"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E53</skos:notation>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/current/E6_Destruction">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P13_destroyed"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E64_End_of_Existence"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >E6</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises events that destroy one or more instances of E18 Physical Thing such that they lose their identity as the subjects of documentation.
+
+Some destruction events are intentional, while others are independent of human activity. Intentional destruction may be documented by classifying the event as both an E6 Destruction and E7 Activity.
+
+The decision to document an object as destroyed, transformed or modified is context sensitive:
+1.  If the matter remaining from the destruction is not documented, the event is modelled solely as E6 Destruction.
+2. An event should also be documented using E81 Transformation if it results in the destruction of one or more objects and the simultaneous production of others using parts or material from the original. In this case, the new items have separate identities. Matter is preserved, but identity is not.
+3. When the initial identity of the changed instance of E18 Physical Thing is preserved, the event should be documented as E11 Modification.
+
+Examples:
+- the destruction of Herculaneum by volcanic eruption in 79 AD
+- the destruction of Nineveh (E6, E7)
+- the breaking of a champagne glass yesterday by my dog
+
+In First Order Logic:
+E6(x) ⊃ E64(x)</rdfs:comment>
+    <rdfs:label xml:lang="en">E6 Destruction</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P129_is_about">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P67_refers_to"/>
+    </rdfs:subPropertyOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P129</skos:notation>
+    <rdfs:label xml:lang="en">P129 is about</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property documents that an E89 Propositional Object has as subject an instance of E1 CRM Entity.
+
+This differs from P67 refers to (is referred to by), which refers to an E1 CRM Entity, in that it describes the primary subject or subjects of an E89 Propositional Object.
+
+Examples:
+- The text entitled 'Reach for the sky' (E33) is about Douglas Bader (E21)
+
+In First Order Logic:
+P129(x,y) ⊃ E89(x)
+P129(x,y) ⊃ E1(y)
+P129(x,y) ⊃ P67(x,y)</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P129i_is_subject_of"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P2_has_type">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E55_Type"/>
+    <rdfs:label xml:lang="en">P2 has type</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P2</skos:notation>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows sub typing of CRM entities - a form of specialisation – through the use of a terminological hierarchy, or thesaurus.
+
+The CRM is intended to focus on the high-level entities and relationships needed to describe data structures. Consequently, it does not specialise entities any further than is required for this immediate purpose. However, entities in the isA hierarchy of the CRM may by specialised into any number of sub entities, which can be defined in the E55 Type hierarchy. E51 Contact Point, for example, may be specialised into "e-mail address", "telephone number", "post office box", "URL" etc. none of which figures explicitly in the CRM hierarchy. Sub typing obviously requires consistency between the meaning of the terms assigned and the more general intent of the CRM entity in question.
+
+Examples:
+- "enquiries@cidoc-crm.org" (E51) has type e-mail address (E55)
+
+In First Order Logic:
+P2(x,y) ⊃ E1(x)
+P2(x,y) ⊃ E55(y)</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P2i_is_type_of"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P11i_participated_in">
+    <rdfs:label xml:lang="en">P11 participated in</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P11i</skos:notation>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12i_was_present_at"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E39_Actor"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P11_had_participant"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P1i_identifies">
+    <rdfs:label xml:lang="en">P1 identifies</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P1i</skos:notation>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P1_is_identified_by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E41_Appellation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P94_has_created">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P94i_was_created_by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E65_Creation"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P94</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92_brought_into_existence"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows a conceptual E65 Creation to be linked to the E28 Conceptual Object created by it.
+
+It represents the act of conceiving the intellectual content of the E28 Conceptual Object. It does not represent the act of creating the first physical carrier of the E28 Conceptual Object. As an example, this is the composition of a poem, not its commitment to paper.
+
+Examples:
+- the composition of "The Four Friends" by A. A. Milne (E65) has created "The Four Friends" by A. A. Milne (E28)
+
+In First Order Logic:
+P94(x,y) ⊃ E65(x)
+P94(x,y) ⊃ E28(y)
+P94(x,y) ⊃ P92(x,y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P94 has created</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P118_overlaps_in_time_with">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by"/>
+    </owl:inverseOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P118</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property identifies an overlap between the instances of E52 Time-Span of two instances of E2 Temporal Entity.
+
+It implies a temporal order between the two entities: if A overlaps in time B, then A must start before B, and B must end after A. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
+
+This property is the same as the "overlaps / overlapped-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+
+Examples:
+- the Iron Age (E4) overlaps in time with the Roman period (E4)
+
+In First Order Logic:
+P118(x,y) ⊃ E2(x)
+P118(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P118 overlaps in time with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P14_carried_out_by">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P14</skos:notation>
+    <rdfs:label xml:lang="en">P14 carried out by</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the active participation of an E39 Actor in an E7 Activity.
+
+It implies causal or legal responsibility. The P14.1 in the role of property of the property allows the nature of an Actor's participation to be specified.
+
+Examples:
+- the painting of the Sistine Chapel (E7) carried out by Michaelangelo Buonaroti (E21) in the role of master craftsman (E55)
+
+In First Order Logic:
+P14 (x,y) ⊃ E7(x)
+P14 (x,y)⊃ E39(y)
+P14 (x,y) ⊃ P11(x,y)
+P14(x,y,z) ⊃ [P14(x,y) ∧ E55(z)]</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P11_had_participant"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P14i_performed"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E7_Activity"/>
+  </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P14i_performed">
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P14_carried_out_by"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E7_Activity"/>
+    <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P11i_participated_in"/>
+    <rdfs:label xml:lang="en">P14 performed</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P14i</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P94i_was_created_by">
+    <rdfs:label xml:lang="en">P94 was created by</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P94i</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E65_Creation"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P94_has_created"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E28_Conceptual_Object"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P8_took_place_on_or_within">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P8</skos:notation>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P8i_witnessed"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the location of an instance of E4 Period with respect to an E19 Physical Object.
+P8 took place on or within (witnessed) is a shortcut of the more fully developed path from E4 Period through P7 took place at, E53 Place, P156 occupies (is occupied by) to E18 Physical Thing.
+
+It describes a period that can be located with respect to the space defined by an E19 Physical Object such as a ship or a building. The precise geographical location of the object during the period in question may be unknown or unimportant.
+For example, the French and German armistice of 22 June 1940 was signed in the same railway carriage as the armistice of 11 November 1918.
+
+Examples:
+- the coronation of Queen Elisabeth II (E7) took place on or within Westminster Abbey (E19)
+
+In First Order Logic:
+P8(x,y) ⊃ E4(x)
+P8(x,y) ⊃ E18(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P8 took place on or within</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P8i_witnessed">
+    <rdfs:label xml:lang="en">P8 witnessed</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P8i</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P8_took_place_on_or_within"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E18_Physical_Thing"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P4_has_time-span">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P4i_is_time-span_of"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the temporal confinement of an instance of an E2 Temporal Entity.
+
+The related E52 Time-Span is understood as the real Time-Span during which the phenomena were active, which make up the temporal entity instance. It does not convey any other meaning than a positioning on the "time-line" of chronology. The Time-Span in turn is approximated by a set of dates (E61 Time Primitive). A temporal entity can have in reality only one Time-Span, but there may exist alternative opinions about it, which we would express by assigning multiple Time-Spans. Related temporal entities may share a Time-Span. Time-Spans may have completely unknown dates but other descriptions by which we can infer knowledge.
+
+Examples:
+- the Yalta Conference (E7) has time-span Yalta Conference time-span (E52)
+
+In First Order Logic:
+P4(x,y) ⊃ E2(x)
+P4(x,y) ⊃ E52(y)</rdfs:comment>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E52_Time-Span"/>
+    <rdfs:label xml:lang="en">P4 has time-span</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P4</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P7_took_place_at">
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P7i_witnessed"/>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="en">P7 took place at</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the spatial location of an instance of E4 Period.
+
+The related E53 Place should be seen as an approximation of the geographical area within which the phenomena that characterise the period in question occurred. P7took place at (witnessed) does not convey any meaning other than spatial positioning (generally on the surface of the earth).  For example, the period "Révolution française" can be said to have taken place in "France", the "Victorian" period, may be said to have taken place in "Britain" and its colonies, as well as other parts of Europe and north America.
+A period can take place at multiple locations.
+It is a shortcut of the more fully developed path from E4 Period through P161 has spatial projection, E53 Place, P89 falls within (contains) to E53 Place. Describe in words.
+
+Examples 
+- the period "Révolution française" (E4) took place at France (E53)
+
+In First Order Logic:
+P7(x,y) ⊃ E4(x)
+P7(x,y) ⊃ E53(y)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P7</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E53_Place"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P7i_witnessed">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P7i</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E53_Place"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P7_took_place_at"/>
+    <rdfs:label xml:lang="en">P7 witnessed</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P4i_is_time-span_of">
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P4_has_time-span"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P4i</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E52_Time-Span"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:label xml:lang="en">P4 is time-span of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P92i</skos:notation>
+    <rdfs:label xml:lang="en">P92 was brought into existence by</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92_brought_into_existence"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12i_was_present_at"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P92_brought_into_existence">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    <rdfs:label xml:lang="en">P92 brought into existence</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E63_Beginning_of_Existence"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P92i_was_brought_into_existence_by"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows an E63 Beginning of Existence event to be linked to the E77 Persistent Item brought into existence by it.
+
+It allows a "start" to be attached to any Persistent Item being documented i.e. E70 Thing, E72 Legal Object, E39 Actor, E41 Appellation, E51 Contact Point and E55 Type.
+
+Examples:
+- the birth of Mozart (E67) brought into existence Mozart (E21)
+
+In First Order Logic:
+P92(x,y) ⊃ E63(x)
+P92(x,y) ⊃ E77(y)
+P92(x,y) ⊃ P12(x,y)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P92</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P118i_is_overlapped_in_time_by">
+    <rdfs:label xml:lang="en">P118 is overlapped in time by</rdfs:label>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P118i</skos:notation>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P118_overlaps_in_time_with"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P2i_is_type_of">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P2i</skos:notation>
+    <rdfs:label xml:lang="en">P2 is type of</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P2_has_type"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E55_Type"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P12</skos:notation>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12i_was_present_at"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the active or passive presence of an E77 Persistent Item in an E5 Event without implying any specific role.
+
+It connects the history of a thing with the E53 Place and E50 Date of an event. For example, an object may be the desk, now in a museum on which a treaty was signed. The presence of an immaterial thing implies the presence of at least one of its carriers.
+
+Examples:
+- Deckchair 42 (E19) was present at The sinking of the Titanic (E5)
+
+In First Order Logic:
+P12(x,y) ⊃ E5(x)
+P12(x,y) ⊃ E77(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P12 occurred in the presence of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P67_refers_to">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P67i_is_referred_to_by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P67</skos:notation>
+    <rdfs:label xml:lang="en">P67 refers to</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property documents that an E89 Propositional Object makes a statement about an instance of E1 CRM Entity. P67 refers to (is referred to by) has the P67.1 has type link to an instance of E55 Type. This is intended to allow a more detailed description of the type of reference. This differs from P129 is about (is subject of), which describes the primary subject or subjects of the E89 Propositional Object.
+
+Examples:
+- the eBay auction listing for 4 July 2002 (E73) refers to silver cup 232 (E22) has type item for sale (E55)
+
+In First Order Logic:
+P67(x,y) ⊃ E89(x)
+P67(x,y) ⊃ E1(y)
+P67(x,y,z) ⊃ [P67(x,y) ∧ E55(z)]
+
+Properties: P67.1 has type: E55 Type</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P9_consists_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property associates an instance of E4 Period with another instance of E4 Period that is defined by a subset of the phenomena that define the former. Therefore the spacetime volume of the latter must fall
+within the spacetime volume of the former.
+This property is transitive.
+
+
+Examples:
+- Cretan Bronze Age (E4) consists of Middle Minoan (E4)
+
+In First Order Logic:
+P9(x,y) ⊃ E4(x)
+P9(x,y) ⊃ E4(y)
+P9(x,y) ⊃ P10(y,x)</rdfs:comment>
+    <rdfs:label xml:lang="en">P9 consists of</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P9i_forms_part_of"/>
+    </owl:inverseOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P9</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P67i_is_referred_to_by">
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P67i</skos:notation>
+    <rdfs:label xml:lang="en">P67 is referred to by</rdfs:label>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P67_refers_to"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P9i_forms_part_of">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P9i</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P9_consists_of"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E4_Period"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:label xml:lang="en">P9 forms part of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P129i_is_subject_of">
+    <rdfs:label xml:lang="en">P129 is subject of</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P129i</skos:notation>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P129_is_about"/>
+    <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P67i_is_referred_to_by"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P119_meets_in_time_with">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P119i_is_met_in_time_by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property indicates that one E2 Temporal Entity immediately follows another.
+
+It implies a particular order between the two entities: if A meets in time with B, then A must precede B. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
+
+This property is the same as the "meets / met-by" relationships of Allen's temporal logic (Allen, 1983, pp. 832-843).
+
+Examples:
+- Early Saxon Period (E4) meets in time with Middle Saxon Period (E4)
+
+In First Order Logic:
+P119(x,y) ⊃ E2(x)
+P119(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P119 meets in time with</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P119</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P1_is_identified_by">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P1</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E41_Appellation"/>
+    <rdfs:label xml:lang="en">P1 is identified by</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the naming or identification of any real world item by a name or any other identifier.
+
+This property is intended for identifiers in general use, which form part of the world the model intends to describe, and not merely for internal database identifiers which are specific to a technical system, unless these latter also have a more general use outside the technical context. This property includes in particular identification by mathematical expressions such as coordinate systems used for the identification of instances of E53 Place. The property does not reveal anything about when, where and by whom this identifier was used. A more detailed representation can be made using the fully developed (i.e. indirect) path through E15 Identifier Assignment.
+
+Examples:
+- the capital of Italy (E53) is identified by "Rome" (E48)
+- text 25014-32 (E33) is identified by "The Decline and Fall of the Roman Empire" (E35)
+
+In First Order Logic:
+P1(x,y) ⊃ E1(x)
+P1(x,y) ⊃ E41(y)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P1i_identifies"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P12i_was_present_at">
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E77_Persistent_Item"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"/>
+    <rdfs:label xml:lang="en">P12 was present at</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P12i</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P119i_is_met_in_time_by">
+    <rdfs:label xml:lang="en">P119 is met in time by</rdfs:label>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P119_meets_in_time_with"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P119i</skos:notation>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://erlangen-crm.org/current/P11_had_participant">
+    <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P12_occurred_in_the_presence_of"/>
+    <rdfs:label xml:lang="en">P11 had participant</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property describes the active or passive participation of instances of E39 Actors in an E5 Event.
+
+It connects the life-line of the related E39 Actor with the E53 Place and E50 Date of the event. The property implies that the Actor was involved in the event but does not imply any causal relationship. The subject of a portrait can be said to have participated in the creation of the portrait.
+
+Examples:
+- Napoleon (E21) participated in The Battle of Waterloo (E7)
+- Maria (E21) participated in Photographing of Maria (E7)
+
+In First Order Logic:
+P11(x,y) ⊃ E5(x)
+P11(x,y) ⊃ E39(y)
+P11(x,y) ⊃ P12(x,y)</rdfs:comment>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P11i_participated_in"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E5_Event"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P11</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E39_Actor"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://erlangen-crm.org/current/P80_end_is_qualified_by">
+    <rdfs:comment xml:lang="en">Scope note:
+This property qualifies the end of an E52 Time-Span in some way.
+
+The nature of the qualification may be certainty, precision, source etc.
+
+Examples:
+- the time-span of the Holocene (E52) end is qualified by approximately (E62)
+
+In First Order Logic:
+P80(x,y) ⊃ E52(x)
+P80(x,y) ⊃ E62(y)
+P80(x,y) ⊃ P3(x,y)</rdfs:comment>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P80</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E52_Time-Span"/>
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:about="http://erlangen-crm.org/current/P3_has_note"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label xml:lang="en">P80 end is qualified by</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://erlangen-crm.org/current/P3_has_note">
+    <rdfs:comment xml:lang="en">Scope note:
+This property is a container for all informal descriptions about an object that have not been expressed in terms of CRM constructs.
+
+In particular it captures the characterisation of the item itself, its internal structures, appearance etc.
+Like property P2 has type (is type of), this property is a consequence of the restricted focus of the CRM. The aim is not to capture, in a structured form, everything that can be said about an item; indeed, the CRM formalism is not regarded as sufficient to express everything that can be said. Good practice requires use of distinct note fields for different aspects of a characterisation. The P3.1 has type property of P3 has note allows differentiation of specific notes, e.g. "construction", "decoration" etc.
+An item may have many notes, but a note is attached to a specific item.
+
+Examples:
+- coffee mug - OXCMS:1983.1.1 (E19) has note "chipped at edge of handle" (E62) has type
+Condition (E55)
+
+In First Order Logic:
+P3(x,y) ⊃ E1(x)
+P3(x,y) ⊃ E62(y)
+P3(x,y,z) ⊃ [P3(x,y) ∧ E55(z)]
+
+Properties: P3.1 has type: E55 Type</rdfs:comment>
+    <rdfs:label xml:lang="en">P3 has note</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P3</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E1_CRM_Entity"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://erlangen-crm.org/current/P79_beginning_is_qualified_by">
+    <rdfs:comment xml:lang="en">Scope note:
+This property qualifies the beginning of an E52 Time-Span in some way.
+
+The nature of the qualification may be certainty, precision, source etc.
+
+Examples:
+- the time-span of the Holocene (E52) beginning is qualified by approximately (E62)
+
+In First Order Logic:
+P79 (x,y) ⊃ E52 (x)
+P79 (x,y) ⊃ E62(y)
+P79(x,y) ⊃ P3(x,y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P79 beginning is qualified by</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://erlangen-crm.org/current/P3_has_note"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E52_Time-Span"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P79</skos:notation>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P120_occurs_before">
+    <rdfs:comment xml:lang="en">Scope note:
+This property identifies the relative chronological sequence of two temporal entities.
+
+It implies that a temporal gap exists between the end of A and the start of B. This property is only necessary if the relevant time spans are unknown (otherwise the relationship can be calculated).
+
+This property is the same as the "before / after" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+
+Examples:
+- Early Bronze Age (E4) occurs before Late Bronze age (E4)
+
+In First Order Logic:
+P120(x,y) ⊃ E2(x)
+P120(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:label xml:lang="en">P120 occurs before</rdfs:label>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P120</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P120i_occurs_after"/>
+    </owl:inverseOf>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P116i_is_started_by">
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P116_starts"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P116i</skos:notation>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">P116 is started by</rdfs:label>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P106i_forms_part_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">P106 forms part of</rdfs:label>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P106_is_composed_of"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P106i</skos:notation>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P117_occurs_during">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P117</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:label xml:lang="en">P117 occurs during</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows the entire E52 Time-Span of an E2 Temporal Entity to be situated within the Time-Span of another temporal entity that starts before and ends after the included temporal entity.
+
+This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "during / includes" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+
+Examples:
+- Middle Saxon period (E4) occurs during Saxon period (E4)
+
+In First Order Logic:
+P117(x,y) ⊃ E2(x)
+P117(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P117i_includes"/>
+    </owl:inverseOf>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P120i_occurs_after">
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P120_occurs_before"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:label xml:lang="en">P120 occurs after</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P120i</skos:notation>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P117i_includes">
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P117i</skos:notation>
+    <rdfs:label xml:lang="en">P117 includes</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P117_occurs_during"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P116_starts">
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P116i_is_started_by"/>
+    <rdfs:label xml:lang="en">P116 starts</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows the starting point for a E2 Temporal Entity to be situated by reference to the starting point of another temporal entity of longer duration.
+
+This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "starts / started-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+
+Examples:
+- Early Bronze Age (E4) starts Bronze Age (E4)
+
+In First Order Logic:
+P116(x,y) ⊃ E2(x)
+P116(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P116</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P148_has_component">
+    <rdfs:label xml:lang="en">P148 has component</rdfs:label>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property associates an instance of E89 Propositional Object with a structural part of it that is by itself an instance of E89 Propositional Object.
+
+Examples:
+- Dante's "Divine Comedy" (E89) has component Dante's "Hell" (E89)
+
+In First Order Logic:
+P148(x,y) ⊃ E89(x)
+P148(x,y) ⊃ E89(y)</rdfs:comment>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P148i_is_component_of"/>
+    </owl:inverseOf>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P148</skos:notation>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P106_is_composed_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This property associates an instance of E90 Symbolic Object with a part of it that is by itself an instance of E90 Symbolic Object, such as fragments of texts or clippings from an image. This property is transitive.
+
+Examples:
+- This Scope note P106 (E33) is composed of fragments of texts (E33)
+- 'recognizable' P106 (E90) is composed of 'ecognizabl' (E90)
+
+In First Order Logic:
+P106(x,y) ⊃ E90(x)
+P106(x,y) ⊃ E90(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P106 is composed of</rdfs:label>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P106i_forms_part_of"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P106</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E90_Symbolic_Object"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P115_finishes">
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P115i_is_finished_by"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="en">Scope note:
+This property allows the ending point for a E2 Temporal Entity to be situated by reference to the ending point of another temporal entity of longer duration.
+
+This property is only necessary if the time span is unknown (otherwise the relationship can be calculated). This property is the same as the "finishes / finished-by" relationships of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+This property is transitive.
+
+Examples:
+- Late Bronze Age (E4) finishes Bronze Age (E4)
+
+In First Order Logic:
+P115(x,y) ⊃ E2(x)
+P115(x,y) ⊃ E2(y)</rdfs:comment>
+    <rdfs:label xml:lang="en">P115 finishes</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P115</skos:notation>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P115i_is_finished_by">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">P115 is finished by</rdfs:label>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P115i</skos:notation>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P115_finishes"/>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P114_is_equal_in_time_to">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Scope note:
+This symmetric property allows the instances of E2 Temporal Entity with the same E52 Time-Span to be equated.
+This property is only necessary if the time span is unknown (otherwise the equivalence can be calculated).
+
+This property is the same as the "equal" relationship of Allen’s temporal logic (Allen, 1983, pp. 832-843).
+This property is transitive.
+
+Examples:
+- the destruction of the Villa Justinian Tempus (E6) is equal in time to the death of Maximus Venderus (E69)
+
+In First Order Logic:
+P114(x,y) ⊃ E2(x)
+P114(x,y) ⊃ E2(y)
+P114(x,y) ⊃ P114(y,x)</rdfs:comment>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P114_is_equal_in_time_to"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E2_Temporal_Entity"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P114</skos:notation>
+    <rdfs:label xml:lang="en">P114 is equal in time to</rdfs:label>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://erlangen-crm.org/current/P148i_is_component_of">
+    <owl:inverseOf rdf:resource="http://erlangen-crm.org/current/P148_has_component"/>
+    <skos:notation rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >P148i</skos:notation>
+    <rdfs:range rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <rdfs:domain rdf:resource="http://erlangen-crm.org/current/E89_Propositional_Object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">P148 is component of</rdfs:label>
+  </owl:TransitiveProperty>
+  
+    <owl:Class rdf:about="http://erlangen-crm.org/efrbroo/F23_Expression_Fragment">
+    <rdfs:label xml:lang="en">F23 Expression Fragment</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises parts of Expressions and these parts are not Self-contained Expressions themselves.
+
+The existence of an instance of F23 Expression Fragment can be due to accident, such as loss of material over time, e.g. the only remaining manuscript of an antique text being partially eaten by worms, or due to deliberate isolation, such as excerpts taken from a text by the compiler of a collection of excerpts.
+
+An F23 Expression Fragment is only identified with respect to its occurrence in a known or assumed whole. The size of an instance of F23 Expression Fragment ranges from more than 99% of an instance of F22 Self-Contained Expression to tiny bits (a few words from a text, one bar from a musical composition, one detail from a still image, a two-second clip from a movie, etc.).
+
+Examples:
+The only remnants of Sappho’s poems 
+
+The words ‘Beati pauperes spiritu’ (excerpted from Matthew’s Gospel 5,3 in Latin translation)       
+        </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://erlangen-crm.org/efrbroo/F2_Expression"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://erlangen-crm.org/efrbroo/F2_Expression">
+    <rdfs:label xml:lang="en">F2 Expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Scope note:
+This class comprises the intellectual or artistic realisations of works in the form of identifiable immaterial objects, such as texts, poems, jokes, musical or choreographic notations, movement pattern, sound pattern, images, multimedia objects, or any combination of such forms that have objectively recognisable structures. The substance of F2 Expression is signs.
+
+Expressions cannot exist without a physical carrier, but do not depend on a specific physical carrier and can exist on one or more carriers simultaneously. Carriers may include human memory.
+
+Inasmuch as the form of F2 Expression is an inherent characteristic of the F2 Expression, any change in form (e.g., from alpha-numeric notation to spoken word, a poem created in capitals and rendered in lower case) is a new F2 Expression. Similarly, changes in the intellectual conventions or instruments that are employed to express a work (e.g., translation from one language to another) result in the creation of a new F2 Expression. Thus, if a text is revised or modified, the resulting F2 Expression is considered to be a new F2 Expression. Minor changes, such as corrections of spelling and punctuation, etc., are normally considered variations within the same F2 Expression. On a practical level, the degree to which distinctions are made between variant expressions of a work will depend to some extent on the nature of the F1 Work itself, and on the anticipated needs of users.
+
+The genre of the work may provide an indication of which features are essential to the expression. In some cases, aspects of physical form, such as typeface and page layout, are not integral to the intellectual or artistic realisation of the work as such, and therefore are not distinctive criteria for the respective expressions. For another work features such as layout may be essential. For instance, the author or a graphic designer may wrap a poem around an image.
+
+An expression of a work may include expressions of other works within it. For instance, an anthology of poems is regarded as a work in its own right that makes use of expressions of the individual poems that have been selected and ordered as part of an intellectual process. This does not make the contents of the aggregated expressions part of this work, but only parts of the resulting expression.
+
+If an instance of F2 Expression is of a specific form, such as text, image, etc., it may be simultaneously instantiated in the specific classes representing these forms in CIDOC CRM. Thereby one can make use of the more specific properties of these classes, such as language (which is applicable to linguistic objects only).
+
+Examples:
+The Italian text of Dante’s ‘Divina Commedia’ as found in the authoritative critical edition ‘La Commedia secondo l’antica vulgata a cura di Giorgio Petrocchi’, Milano: Mondadori, 1966-67 (= Le Opere di Dante Alighieri, Edizione Nazionale a cura della Società Dantesca Italiana, VII, 1-4) (F22)
+
+The Italian text of Dante’s ‘Inferno’ as found in the same edition (F22)
+
+Nel mezzo del cammin di nostra vita 
+mi ritrovai per una selva oscura    
+ché la diritta via era smarrita [the Italian text of the first stanza of Dante’s ‘Inferno’ and ‘Divina Commedia’] (F23)
+
+The signs which make up Christian Morgenstern’s ‘Fisches Nachtgesang’ [a poem consisting simply of “-” and “˘” signs, arranged in a determined combination] (F22)
+        </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://erlangen-crm.org/efrbroo/F28_Expression_Creation"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://erlangen-crm.org/efrbroo/R17i_was_created_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://erlangen-crm.org/current/E73_Information_Object"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.w3.org/2006/time#Instant"> 
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+  </owl:Class>
+  
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#before">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <rdfs:domain rdf:resource="http://www.w3.org/2006/time#TemporalEntity" />
+    <rdfs:range  rdf:resource="http://www.w3.org/2006/time#TemporalEntity" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#after">
+    <owl:inverseOf rdf:resource="http://www.w3.org/2006/time#before" />
+  </owl:ObjectProperty>
+  
+  <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.w3.org/2006/time#Instant" />
+      <owl:Class rdf:about="http://www.w3.org/2006/time#Interval" />
+    </owl:unionOf>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
