@@ -9,11 +9,8 @@ $context = resolve_narrative_context_from_request(array(
 	'id_keys' => array('idNarr', 'idNarra', 'id'),
 	'subject_keys' => array('subject', 'subjectId'),
 ));
-$slides = post_param('slides', '');
 $user = $context['storageUser'];
-$title = post_param('narrationTitle', '');
 $idNarration = $context['idNarration'];
-$subjectNarration = $context['subjectId'];
 $baseUrl = post_param('baseURL', '');
 
 $tableName = $context['tableName'];
@@ -26,15 +23,12 @@ $info = fetch_narrative_info_object($tableName);
 
 if (isset($_SESSION['Demon_on'])) {
 	$datasetFs = 'https://tool.dlnarratives.eu/fuseki/prova2';
-	$datasetName = 'prova2';
 	$storageSubdir = 'prova2';
 } elseif (isset($info->CSVnumber)) {
 	$datasetFs = 'https://tool.dlnarratives.eu/fuseki/moving';
-	$datasetName = 'moving';
 	$storageSubdir = 'moving';
 } else {
 	$datasetFs = 'http://127.0.0.1:3030/narratives';
-	$datasetName = 'narratives';
 	$storageSubdir = 'narratives';
 }
 
@@ -46,10 +40,32 @@ $triplifyPayload = array(
 
 $jsonDir = json_storage_dir($storageSubdir);
 $owlDir = owl_storage_dir($storageSubdir);
+
+foreach (array(
+	'JSON' => $jsonDir,
+	'OWL' => $owlDir,
+) as $outputType => $outputDir) {
+	if (!is_dir($outputDir) || !is_writable($outputDir)) {
+		json_error_response(
+			'The ' . $outputType . ' output directory is not writable by the web server.',
+			500,
+			array('path' => $outputDir)
+		);
+	}
+}
+
 $jsonPath = $jsonDir . DIRECTORY_SEPARATOR . $user . '_N' . $idNarration . '.json';
 $owlPath = $owlDir . DIRECTORY_SEPARATOR . $user . '_N' . $idNarration . '.owl';
 
-file_put_contents($jsonPath, json_encode($triplifyPayload));
+$jsonContent = json_encode($triplifyPayload);
+if ($jsonContent === false) {
+	json_error_response('Unable to encode narrative data for graph generation: ' . json_last_error_msg(), 500);
+}
+
+$jsonBytesWritten = file_put_contents($jsonPath, $jsonContent);
+if ($jsonBytesWritten === false || $jsonBytesWritten !== strlen($jsonContent) || !is_readable($jsonPath)) {
+	json_error_response('Unable to write the triplification JSON input file.', 500, array('path' => $jsonPath));
+}
 chmod($jsonPath, 0777);
 
 $output = array();
@@ -66,77 +82,21 @@ if ($triplifyRoot !== false) {
     exec($command, $output, $retval);
     if (file_exists($owlPath)) {
         chmod($owlPath, 0777);
+    } elseif ($retval === 0) {
+        $output[] = 'Triplifier completed without creating the OWL output file';
+        $retval = 1;
     }
 } else {
     $output[] = 'Triplify directory not found';
     $retval = 1;
 }
 
-$storyBaseDir = ensure_directory(app_root_path() . DIRECTORY_SEPARATOR . 'storymaps' . DIRECTORY_SEPARATOR . $user);
-$storyDir = ensure_directory($storyBaseDir . DIRECTORY_SEPARATOR . 'N' . $idNarration);
-
-$slideJsonPath = $storyDir . DIRECTORY_SEPARATOR . 'slide.json';
-file_put_contents($slideJsonPath, $slides);
-chmod($slideJsonPath, 0777);
-
-$searchLink = '../../../Search/?user=' . $user . '&id=N' . $idNarration . '&dataset=' . $datasetName;
-$visualizationLinks = array(
-	'<a href="?visualization=map">Storymap</a>',
-	'<a href="?visualization=timeline">Timeline</a>',
-);
-if (!isset($info->CSVnumber)) {
-	$visualizationLinks[] = '<a href="../../../Entity_With_Events/?user=' . $user . '&idNarra=N' . $idNarration . '&dataset=' . $datasetName . '">Entity With Related Events</a>';
-}
-
-$html = '<html>
-<head>
-	<meta charset="UTF-8">
-    <title>Narrative - ' . $title . '</title>
-    <link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../lib/narra.css" />
-    <script src="../../../lib/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../../lib/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-	
-    <script src="../../../lib/typeahead.bundle.min.js" type="text/javascript" charset="utf-8"></script>
-	
-	<script src="../../lib/visualization.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" href="https://cdn.knightlab.com/libs/storymapjs/0.8.6/css/storymap.css">
-	<script type="text/javascript" src="../../../lib/storymap.js"></script>
-	<link rel="stylesheet" type="text/css" href="../../../lib/timeline.css" />
-	<script src="../../../lib/timeline-min.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" type="text/css" href="../../lib/narrativeVisualization.css" />
-</head>
-<body>
-	<div id="menu">
-		<div id="titleTable">
-		<h1>' . $title . '</h1>
-		</div>
-		<div class="otherVisual">
-		  <button class="dropbtn">Other Visualizations</button>
-		  <div class="otherVisual-content">
-			' . implode("\n\t\t\t", $visualizationLinks) . '
-		  </div>
-		</div>
-		<a href="' . $searchLink . '">
-		<div class="otherNarratives">
-		  <button class="dropbtn">Search</button>
-		</div>
-		</a>
-	</div>
-	<div id="mapdiv"></div>
-</body>
-</html>';
-
-$indexPath = $storyDir . DIRECTORY_SEPARATOR . 'index.html';
-file_put_contents($indexPath, $html);
-chmod($indexPath, 0777);
-
-$link = $scheme . '://' . $baseUrl . '/storymaps/' . $user . '/N' . $idNarration . '/';
+$owlLink = $retval === 0
+	? $scheme . '://' . $baseUrl . '/owl/' . rawurlencode($storageSubdir) . '/' . rawurlencode($user . '_N' . $idNarration . '.owl')
+	: null;
 
 json_response(array(
-	'msg' => $slides,
-	'link' => $link,
+	'owlLink' => $owlLink,
 	'output' => $output,
 	'exitCode' => $retval,
 ));
