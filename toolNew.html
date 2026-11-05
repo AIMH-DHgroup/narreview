@@ -77,14 +77,20 @@
 				<div class="nav not-selectable" id="saveButton"><span>Save Event</span></div>
 				<div class="nav not-selectable" id="cancelButton"><span>Clear Form</span></div>
 
-				<div class="nav not-selectable" id="visMapButton"><span>Map Preview</span></div>
-				<div class="nav not-selectable" id="visTimeButton"><span>Timeline Preview</span></div>
-				<div class="nav not-selectable" id="exportOWLButton"><span>Download OWL</span></div>
-				<div class="nav not-selectable" id="exportButton"><span>Download JSON</span></div>
-
-				<div class="nav buttonPublishMap not-selectable" id="publish-story-container">
-					<div id="loading"><img src="img/spinner.gif" alt="Loading icon" height="28" width="28"></div>
-					<span>Publish Story</span>
+				<div class="nav not-selectable" id="visMapButton">
+					<div id="mapPreviewLoading"><img src="img/spinner.gif" alt="Loading preview" height="28" width="28"></div>
+					<span>Map Preview</span>
+				</div>
+				<div class="settings-dropdown nav" id="settingsDropdown">
+					<button class="not-selectable settings-toggle" id="settingsButton" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu">Settings <i class="fa-solid fa-caret-down" aria-hidden="true"></i></button>
+					<div class="settings-menu" id="settingsMenu" hidden>
+						<div class="nav not-selectable" id="exportOWLButton"><span>Download OWL</span></div>
+						<div class="nav not-selectable" id="exportButton"><span>Download JSON</span></div>
+						<div class="nav buttonPublishMap not-selectable" id="publish-story-container">
+							<div id="loading"><img src="img/spinner.gif" alt="Loading icon" height="28" width="28"></div>
+							<span>Create Graph</span>
+						</div>
+					</div>
 				</div>
 				<a class="not-selectable" id="helpStorymap_aTag" href="Short_Guide/Short%20Guide%20to%20use%20SMBVT.pdf" target="_blank"><div class="nav" id="helpStorymap"><span>Help</span></div></a>
 			</div>
