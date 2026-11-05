@@ -16,6 +16,7 @@ $baseUrl = post_param('baseURL', '');
 $tableName = $context['tableName'];
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $triplifyRoot = realpath('/opt/smbvt');
+$triplifyJar = $triplifyRoot !== false ? $triplifyRoot . DIRECTORY_SEPARATOR . 'triplify.jar' : false;
 
 $events = fetch_narrative_events_map($tableName);
 $entities = fetch_narrative_entities_map($tableName);
@@ -70,10 +71,10 @@ chmod($jsonPath, 0777);
 
 $output = array();
 $retval = null;
-if ($triplifyRoot !== false) {
+if ($triplifyRoot !== false && $triplifyJar !== false && is_file($triplifyJar) && is_readable($triplifyJar)) {
     $command = 'cd ' . escapeshellarg($triplifyRoot) . ' && ' .
             'java -Xmx512m -cp ' .
-            escapeshellarg($triplifyRoot . ':' . $triplifyRoot . '/triplify.jar') .
+            escapeshellarg($triplifyRoot . PATH_SEPARATOR . $triplifyJar) .
             ' narra.triplifier.Triplify ' .
             escapeshellarg($jsonPath) . ' ' .
             escapeshellarg($owlPath) . ' ' .
@@ -87,7 +88,7 @@ if ($triplifyRoot !== false) {
         $retval = 1;
     }
 } else {
-    $output[] = 'Triplify directory not found';
+    $output[] = 'Triplify JAR not found or not readable: ' . ($triplifyJar === false ? __DIR__ . '/../Triplify/triplify.jar' : $triplifyJar);
     $retval = 1;
 }
 

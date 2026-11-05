@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.ics.forth.gr/isl/CRMgeo/" uri="CRMgeo_v1_2.rdfs"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="http://dantesources.org/narratives/" uri="swrl-quantitative.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="http://erlangen-crm.org/160714/" uri="ecrm_160714.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="simple-swrl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-10.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-10a.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-4.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-5.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-6.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-7.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-8.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new-9.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-new.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl-qualitative.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="duplicate:http://www.intelligence.tuc.gr/~batsakis/swrl-test" uri="swrl_2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1768308426754" name="https://dlnarratives.eu" uri="imported-ontologies.owl"/>
+    </group>
+</catalog>
