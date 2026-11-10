@@ -251,15 +251,16 @@
 
                 var path = section.data('background');
                 if (typeof path !== 'undefined') {
+                    var pathLowerCase = path.toLowerCase();
 
 
-                    if (path.indexOf("jpg") >= 0 || path.indexOf("jpeg") >= 0 || path.indexOf("png") >= 0 || path.indexOf("bmp") >= 0 || path.indexOf("gif") >= 0) {
+                    if (pathLowerCase.indexOf("jpg") >= 0 || pathLowerCase.indexOf("jpeg") >= 0 || pathLowerCase.indexOf("png") >= 0 || pathLowerCase.indexOf("bmp") >= 0 || pathLowerCase.indexOf("gif") >= 0 || pathLowerCase.indexOf("svg") >= 0) {
                         $("head").append("<style> ." + section.data('scene') + "-bg-img { background: url(" + path + ") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;  -o-background-size: cover; background-size: cover; }</style>");
 
                         $(section).find(".fullscreen").addClass(section.data('scene') + "-bg-img");
 						$(section).find(".fullscreen2").addClass(section.data('scene') + "-bg-img");
 
-                    } else if (path.indexOf("mp4") >= 0) {
+                    } else if (pathLowerCase.indexOf("mp4") >= 0) {
 
                         $(section).find(".fullscreen").before('<video class="fullscreen canvas-center"  playsinline autoplay muted loop><source src=' + path + '  type="video/mp4"></video>')
 						$(section).find(".fullscreen2").before('<video class="fullscreen canvas-center"  playsinline autoplay muted loop><source src=' + path + '  type="video/mp4"></video>')
