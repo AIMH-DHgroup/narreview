@@ -270,6 +270,30 @@ body::-webkit-scrollbar {
 	float: right;
 	margin: 10px 10px 0 0;
 	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 4px;
+}
+
+.event-type-current {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+#change-event-type {
+	border: 0;
+	padding: 0;
+	background: none;
+	color: #337ab7;
+	font-size: 85%;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#change-event-type:hover,
+#change-event-type:focus {
+	color: #23527c;
 }
 
 .disabledButton {
