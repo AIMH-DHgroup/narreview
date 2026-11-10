@@ -1536,6 +1536,11 @@ hr {
 	padding: 0;
 }
 
+#workspace #typeDiv,
+#workspace #position-group {
+	display: none !important;
+}
+
 .dateInput {
 	display: inline-block;
 	text-align: center !important;
