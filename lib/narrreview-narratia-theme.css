@@ -1,0 +1,530 @@
+/*
+ * NarrReview / Narratia — Phase 1: scoped light-theme colors only.
+ * Source: design-reference/project/ds/narratia/tokens.json (light values).
+ * Keep layout, sizing, typography, images and application-controlled states
+ * in the existing stylesheets. No Narratia runtime or global token overrides.
+ */
+body.narrreview-narratia-theme,
+body.narrreview-narratia-editor {
+    --nr-surface: #ffffff;
+    --nr-surface-raised: #ffffff;
+    --nr-surface-sunken: #f0f0f0;
+    --nr-line: #e2e2e2;
+    --nr-line-strong: #8a8a8a;
+    --nr-ink: #0a0a0a;
+    --nr-ink-muted: #5c5c5c;
+    --nr-accent: #0a0a0a;
+    --nr-accent-hover: #2e2e2e;
+    --nr-on-accent: #ffffff;
+    --nr-focus: #0a0a0a;
+    --nr-status-closed: #c4161c;
+    --nr-status-closed-soft: #fde8e8;
+    --nr-media: #0a0a0a;
+    --nr-media-label: rgba(18, 18, 18, 0.92);
+
+    background-color: var(--nr-surface-sunken);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme #introDiv,
+body.narrreview-narratia-theme #auth-div,
+body.narrreview-narratia-theme #userDBs,
+body.narrreview-narratia-theme .dropdown-menu,
+body.narrreview-narratia-theme .modal-content,
+body.narrreview-narratia-theme .tt-menu {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme .subjectName,
+body.narrreview-narratia-theme .form-signin-heading,
+body.narrreview-narratia-theme .modal-title {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme .dropdown-header,
+body.narrreview-narratia-theme .json-import-help,
+body.narrreview-narratia-theme #user-pass,
+body.narrreview-narratia-theme > p {
+    color: var(--nr-ink-muted);
+}
+
+body.narrreview-narratia-theme a {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme a:hover,
+body.narrreview-narratia-theme a:focus {
+    color: var(--nr-accent-hover);
+}
+
+body.narrreview-narratia-theme .one-fifth {
+    background-color: var(--nr-media);
+    border-color: var(--nr-line);
+}
+
+body.narrreview-narratia-theme .one-fifth:hover {
+    outline-color: var(--nr-focus);
+}
+
+body.narrreview-narratia-theme .personName {
+    background-color: var(--nr-media-label);
+    color: var(--nr-on-accent);
+}
+
+body.narrreview-narratia-theme input,
+body.narrreview-narratia-theme select,
+body.narrreview-narratia-theme .form-control,
+body.narrreview-narratia-theme #userDBs input,
+body.narrreview-narratia-theme #userDBs select {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink);
+    caret-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme input::placeholder {
+    color: var(--nr-ink-muted);
+}
+
+body.narrreview-narratia-theme .btn-primary,
+/* Legacy top buttons set these colors with !important in narraintro.css. */
+body.narrreview-narratia-theme .btn-primary.top-btn {
+    background-color: var(--nr-accent) !important;
+    border-color: var(--nr-accent) !important;
+    color: var(--nr-on-accent) !important;
+}
+
+body.narrreview-narratia-theme .btn-primary:hover,
+body.narrreview-narratia-theme .btn-primary:focus,
+body.narrreview-narratia-theme .btn-primary:active,
+body.narrreview-narratia-theme .btn-primary.active,
+body.narrreview-narratia-theme .open > .btn-primary.dropdown-toggle {
+    background-color: var(--nr-accent-hover) !important;
+    border-color: var(--nr-accent-hover) !important;
+    color: var(--nr-on-accent) !important;
+}
+
+body.narrreview-narratia-theme .btn-primary:disabled,
+body.narrreview-narratia-theme .btn-primary.disabled,
+body.narrreview-narratia-theme .btn-primary[disabled] {
+    background-color: var(--nr-accent) !important;
+    border-color: var(--nr-accent) !important;
+    color: var(--nr-on-accent) !important;
+}
+
+body.narrreview-narratia-theme .btn-default,
+body.narrreview-narratia-theme .btn-secondary,
+body.narrreview-narratia-theme #back,
+body.narrreview-narratia-theme .data {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-theme .btn-default:hover,
+body.narrreview-narratia-theme .btn-default:focus,
+body.narrreview-narratia-theme .btn-default:active,
+body.narrreview-narratia-theme .btn-secondary:hover,
+body.narrreview-narratia-theme .btn-secondary:focus,
+body.narrreview-narratia-theme .btn-secondary:active,
+body.narrreview-narratia-theme #back:hover,
+body.narrreview-narratia-theme .narra-list-item a:hover,
+body.narrreview-narratia-theme .dropdown-menu > li > a:hover,
+body.narrreview-narratia-theme .dropdown-menu > li > a:focus,
+body.narrreview-narratia-theme .tt-suggestion:hover,
+body.narrreview-narratia-theme .tt-suggestion.tt-cursor {
+    background-color: var(--nr-surface-sunken) !important;
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-theme .modal-header,
+body.narrreview-narratia-theme .modal-footer,
+body.narrreview-narratia-theme #dataTable th,
+body.narrreview-narratia-theme #dataTable td {
+    border-color: var(--nr-line);
+}
+
+body.narrreview-narratia-theme .close {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme .help-inline,
+body.narrreview-narratia-theme .text-danger {
+    color: var(--nr-status-closed);
+}
+
+body.narrreview-narratia-theme .deleteButton,
+body.narrreview-narratia-theme #dataTable td button {
+    background-color: var(--nr-status-closed-soft);
+    border-color: var(--nr-status-closed);
+    color: var(--nr-status-closed);
+}
+
+body.narrreview-narratia-theme .deleteButton:hover,
+body.narrreview-narratia-theme #dataTable td button:hover {
+    background-color: var(--nr-status-closed);
+    color: var(--nr-on-accent);
+}
+
+/* The existing inline stylesheet marks odd-row backgrounds !important. */
+body.narrreview-narratia-theme #dataTable tr.odd {
+    background-color: var(--nr-surface-raised) !important;
+}
+
+body.narrreview-narratia-theme #dataTable tr.even,
+body.narrreview-narratia-theme #dataTable thead {
+    background-color: var(--nr-surface-sunken);
+}
+
+body.narrreview-narratia-theme #dataTable_wrapper .dataTables_length,
+body.narrreview-narratia-theme #dataTable_wrapper .dataTables_filter,
+body.narrreview-narratia-theme #dataTable_wrapper .dataTables_info,
+body.narrreview-narratia-theme #dataTable_wrapper .dataTables_paginate {
+    color: var(--nr-ink-muted);
+}
+
+/* Focus rings do not consume layout space or alter existing hit targets. */
+body.narrreview-narratia-theme input:focus,
+body.narrreview-narratia-theme select:focus {
+    border-color: var(--nr-focus);
+    box-shadow: none;
+}
+
+body.narrreview-narratia-theme :focus-visible,
+body.narrreview-narratia-theme #userMenu:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+body.narrreview-narratia-theme ::selection {
+    background-color: var(--nr-accent);
+    color: var(--nr-on-accent);
+}
+
+/*
+ * Editor batch: application surfaces and controls only. Share the light tokens
+ * above without opting the editor into the home-page rules.
+ * Do not target Leaflet/Draw, TimelineJS/StoryMap previews, Uploadcare widgets,
+ * maps, canvases or embedded Sketchfab/ATON viewers.
+ */
+body.narrreview-narratia-editor :is(#header, #controls, #workspace, #event-type-container, #sidebar, #auth-div, #bootstrap-progress-card) {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#leftNav, #timeline, #bottomTimeline, #overlay, .relation) {
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-line);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#bigName, #bootstrap-progress-title, #auth-form .form-signin-heading, #sidebar .titleHeading, #sidebar .dateHeading) {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#entities-not-selected, #no-entities, #inputHelp, #mandatory-fields-text, #event-counter, #bootstrap-progress-meta, #user-pass, #map-editor-status, #sketchfab-editor-status, #aton-editor-status, #relHelpContainer) {
+    color: var(--nr-ink-muted);
+}
+
+/* These app-owned controls receive inline category colors on workspace reset. */
+body.narrreview-narratia-editor :where(#central-nav, #leftNav, #event-type-container) .nav,
+body.narrreview-narratia-editor :is(#account-btn, #cover-page, #add-image-icon),
+body.narrreview-narratia-editor :is(#workspace, #auth-div, .modal-content, .popover) :is(.btn-default, .btn-secondary, .popoverButton) {
+    background-color: var(--nr-surface-raised) !important;
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-editor #account-list {
+    background-color: var(--nr-surface-raised) !important;
+}
+
+body.narrreview-narratia-editor :where(#central-nav, #leftNav, #event-type-container) .nav:hover,
+body.narrreview-narratia-editor :is(#account-btn, #cover-page, #add-image-icon):hover,
+body.narrreview-narratia-editor :is(#workspace, #auth-div, .modal-content, .popover) :is(.btn-default, .btn-secondary, .popoverButton):is(:hover, :active) {
+    background-color: var(--nr-surface-sunken) !important;
+    color: var(--nr-ink) !important;
+}
+
+/* Override the legacy blue Save fill, green publish fill and header-btn colors. */
+body.narrreview-narratia-editor :is(#saveButton, #buttonSaveTitle, #publish-story-container, #home),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content, .popover) .btn-primary {
+    background-color: var(--nr-accent) !important;
+    border-color: var(--nr-accent) !important;
+    color: var(--nr-on-accent) !important;
+}
+
+body.narrreview-narratia-editor :is(#saveButton, #buttonSaveTitle, #publish-story-container, #home):is(:hover, :active, :focus-visible),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content, .popover) .btn-primary:is(:hover, :active, :focus-visible) {
+    background-color: var(--nr-accent-hover) !important;
+    border-color: var(--nr-accent-hover) !important;
+    color: var(--nr-on-accent) !important;
+}
+
+/* The existing pressed gradient, shadow and transform remain in force. */
+body.narrreview-narratia-editor #central-nav .add-button-active,
+body.narrreview-narratia-editor #leftNav .add-button-active-entities {
+    background-color: var(--nr-accent) !important;
+    border-color: var(--nr-accent);
+    color: var(--nr-on-accent) !important;
+}
+
+body.narrreview-narratia-editor #central-nav :is(#addButton, #saveButton, #cancelButton).disabledButton,
+body.narrreview-narratia-editor :is(#central-nav, #leftNav, #event-type-container) .disabledButton,
+body.narrreview-narratia-editor :is(#central-nav, #leftNav, #event-type-container) .nav[disabled],
+body.narrreview-narratia-editor :is(#workspace, #auth-div, .modal-content, .popover) .btn:is(:disabled, .disabled) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: var(--nr-line-strong) !important;
+    color: var(--nr-ink-muted) !important;
+}
+
+/* Entity identities and drag/drop data stay on their existing DOM attributes. */
+body.narrreview-narratia-editor :is(#controls, #inputDiv, #sidebar, #narratives-menu, #account-menu) .data {
+    background-color: var(--nr-surface-raised) !important;
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-editor :is(#controls, #inputDiv, #sidebar, #narratives-menu, #account-menu) .data:hover {
+    background-color: var(--nr-surface-sunken) !important;
+}
+
+body.narrreview-narratia-editor #controls .inner-shadow {
+    box-shadow: inset 0 0 0 2px var(--nr-focus);
+}
+
+body.narrreview-narratia-editor :is(#sidebar .timelineEvent, .timelineEventDragHelper) {
+    background-color: var(--nr-surface-raised) !important;
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #timeline .timelineEvent--current {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: var(--nr-accent);
+    box-shadow: 0 0 0 4px var(--nr-line-strong);
+}
+
+body.narrreview-narratia-editor #timeline .timelineEventPlaceholder {
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-line-strong);
+}
+
+body.narrreview-narratia-editor #sidebar .withArrows .timelineEvent::after {
+    border-top-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor #sidebar .withArrows .timelineEvent::before {
+    border-top-color: var(--nr-line-strong);
+}
+
+body.narrreview-narratia-editor #event-form .form-control,
+body.narrreview-narratia-editor #auth-form .form-control,
+body.narrreview-narratia-editor :is(#searchInput, #eventSearch, #inputDiv),
+body.narrreview-narratia-editor :is(.modal-content, .popoverContent) :is(input, textarea, select):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):not([type="file"]) {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink);
+    caret-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#event-form, #auth-form, .modal-content, .popoverContent) :is(input, textarea)::placeholder,
+body.narrreview-narratia-editor :is(#searchInput, #eventSearch)::placeholder {
+    color: var(--nr-ink-muted) !important;
+}
+
+body.narrreview-narratia-editor :is(#event-form, #auth-form, .modal-content, .popoverContent) label,
+body.narrreview-narratia-editor :is(#entitiesLabel, #add-image-text) {
+    color: var(--nr-ink);
+    border-color: var(--nr-line-strong);
+}
+
+body.narrreview-narratia-editor :is(#event-form, .modal-content) :is(.image-caption-group, .video-caption-group),
+body.narrreview-narratia-editor #digobjTable .digobjPreview {
+    border-color: var(--nr-line);
+}
+
+body.narrreview-narratia-editor :is(#change-event-type, #helpStorymap_aTag),
+body.narrreview-narratia-editor :is(#user-pass, #digobjTable, .popoverContent, .modal-content) a:not(.btn) {
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-editor :is(#change-event-type, #helpStorymap_aTag):hover,
+body.narrreview-narratia-editor :is(#user-pass, #digobjTable, .popoverContent, .modal-content) a:not(.btn):hover {
+    color: var(--nr-accent-hover) !important;
+}
+
+body.narrreview-narratia-editor :is(#dropdown-menu-header, #settingsMenu, .modal-content, .popover, #event-form .tt-menu, .popoverContent .tt-menu, .modal-content .tt-menu) {
+    background-color: var(--nr-surface-raised);
+    border-color: var(--nr-line);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #dropdown-menu-header {
+    border-color: var(--nr-line) !important;
+}
+
+body.narrreview-narratia-editor #dropdown-menu-header .dropdown-header {
+    color: var(--nr-ink-muted);
+}
+
+body.narrreview-narratia-editor :is(.modal-header, .modal-footer, .popover-title) {
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-line);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(.modal-content, .popover) .close {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#event-form, .popoverContent, .modal-content) .tt-suggestion:is(:hover, .tt-cursor) {
+    background-color: var(--nr-surface-sunken) !important;
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor .popover.right > .arrow::after {
+    border-right-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor .popover.left > .arrow::after {
+    border-left-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor .popover.bottom > .arrow::after {
+    border-bottom-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor .popover.top > .arrow::after {
+    border-top-color: var(--nr-surface-raised);
+}
+
+/* Preserve validation classes and their existing border widths/styles. */
+body.narrreview-narratia-editor :is(#event-form, #auth-form, .modal-content, .popoverContent) .has-error .form-control,
+body.narrreview-narratia-editor #auth-div.has-error .form-control,
+body.narrreview-narratia-editor #entitiesDiv.has-error,
+body.narrreview-narratia-editor #map-editor-group.has-error-map,
+body.narrreview-narratia-editor :is(#event-form, .popoverContent) :is(.has-error-coors, .has-error-date, .has-error-sketch, .has-error-input-div) {
+    border-color: var(--nr-status-closed) !important;
+}
+
+body.narrreview-narratia-editor :is(#auth-div .help-inline, #event-form .has-error .entitiesLabel, #event-form .has-error .control-label) {
+    color: var(--nr-status-closed);
+}
+
+body.narrreview-narratia-editor :is(#alertPlaceholder .alert-danger, #alertPlaceholder .alert-warning) {
+    background-color: var(--nr-status-closed-soft);
+    border-color: var(--nr-status-closed);
+    color: var(--nr-status-closed);
+}
+
+/* Narratia represents success/information neutrally; existing messages remain. */
+body.narrreview-narratia-editor :is(#alertPlaceholder .alert-success, #alertPlaceholder .alert-info) {
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(#sidebar .deleteButton, #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton, .popover .deleteButtonPopover, #digobjTable .digObjDeleteButton) {
+    background-color: var(--nr-status-closed-soft);
+    border-color: var(--nr-status-closed);
+    color: var(--nr-status-closed);
+}
+
+body.narrreview-narratia-editor :is(#sidebar .deleteButton, #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton, .popover .deleteButtonPopover, #digobjTable .digObjDeleteButton):hover {
+    background-color: var(--nr-status-closed);
+    color: var(--nr-on-accent);
+}
+
+/* Only app-owned keyboard targets; no tabindex or plugin-control changes. */
+body.narrreview-narratia-editor :is(#header, #leftNav, #event-type-container, #auth-form, .popoverContent, .modal-content) :focus-visible,
+body.narrreview-narratia-editor #event-form :is(input, textarea, select, button, .tooltips, .data):focus-visible,
+body.narrreview-narratia-editor :is(#searchInput, #eventSearch):focus-visible,
+body.narrreview-narratia-editor #sidebar :is(.timelineEvent, .data):focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+body.narrreview-narratia-editor :is(#event-form, #auth-form) .form-control:focus,
+body.narrreview-narratia-editor :is(.modal-content, .popoverContent) :is(input, textarea, select):focus {
+    box-shadow: none;
+}
+
+/* Visual polish batch 1: resting secondary controls only; retain state feedback. */
+body.narrreview-narratia-editor :is(#addButton, #cancelButton, #visMapButton, #settingsDropdown, #helpStorymap, #account-btn, #cover-page):not(:hover):not(:active):not(:focus-within):not(.add-button-active),
+body.narrreview-narratia-editor #leftNav > .nav:not(:hover):not(:active):not(:focus-within):not(.add-button-active-entities) {
+    box-shadow: none;
+}
+
+body.narrreview-narratia-editor #bigName {
+    text-shadow: none;
+}
+
+body.narrreview-narratia-editor #bootstrap-progress-bar-wrap {
+    background-color: var(--nr-surface-sunken);
+}
+
+body.narrreview-narratia-editor #bootstrap-progress-bar {
+    background-color: var(--nr-accent);
+    background-image: none;
+}
+
+/* Approved wide logo column; retain the complete PNG and its intrinsic ratio. */
+body.narrreview-narratia-editor #logo-container {
+    flex-basis: 220px;
+}
+
+body.narrreview-narratia-editor #logo {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+}
+
+body.narrreview-narratia-editor #event-form input.form-control {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* Login branding is out of flow and follows the existing auth card visibility. */
+body.narrreview-narratia-theme #login-branding {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(280px, calc(100vw - 32px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-theme #login-branding > img {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+}
+
+body.narrreview-narratia-theme #login-branding > span {
+    flex-shrink: 0;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+/* Short screens: compact only the new block, never move the sign-in card. */
+@media (max-height: 600px) {
+    body.narrreview-narratia-theme #login-branding {
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > img {
+        width: min(160px, calc((20vh - 24px) * 4.0753968254));
+    }
+}
