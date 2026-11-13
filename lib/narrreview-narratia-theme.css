@@ -428,13 +428,13 @@ body.narrreview-narratia-editor :is(#alertPlaceholder .alert-success, #alertPlac
     color: var(--nr-ink);
 }
 
-body.narrreview-narratia-editor :is(#sidebar .deleteButton, #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton, .popover .deleteButtonPopover, #digobjTable .digObjDeleteButton) {
+body.narrreview-narratia-editor :is(#sidebar .deleteButton:not(.relationship-unlink), #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton) {
     background-color: var(--nr-status-closed-soft);
     border-color: var(--nr-status-closed);
     color: var(--nr-status-closed);
 }
 
-body.narrreview-narratia-editor :is(#sidebar .deleteButton, #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton, .popover .deleteButtonPopover, #digobjTable .digObjDeleteButton):hover {
+body.narrreview-narratia-editor :is(#sidebar .deleteButton:not(.relationship-unlink), #controls .deleteButton, #inputDiv .deleteButton, #narratives-menu .deleteButton):hover {
     background-color: var(--nr-status-closed);
     color: var(--nr-on-accent);
 }
@@ -527,4 +527,1435 @@ body.narrreview-narratia-theme #login-branding > span {
     body.narrreview-narratia-theme #login-branding > img {
         width: min(160px, calc((20vh - 24px) * 4.0753968254));
     }
+}
+
+/* The Librarian: login-only subtitle; preserve every existing logo size rule. */
+body.narrreview-narratia-theme #login-branding > p {
+    width: min(320px, calc(100vw - 16px));
+    margin: 0;
+    color: var(--nr-ink-muted);
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+}
+
+/* Reduce only branding clearance and text spacing where vertical room is tight. */
+@media (max-height: 800px) {
+    body.narrreview-narratia-theme #login-branding {
+        bottom: calc(100% + 4px);
+        gap: 2px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > span {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+/* Keep the unchanged compact logo beside the name, with a full-width subtitle. */
+@media (max-height: 600px) {
+    body.narrreview-narratia-theme #login-branding {
+        width: min(320px, calc(100vw - 16px));
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 2px 8px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > p {
+        grid-column: 1 / -1;
+        line-height: 16px;
+    }
+}
+
+/* Larger login typography only where the unchanged card leaves enough room. */
+@media (min-height: 740px) {
+    body.narrreview-narratia-theme #login-branding {
+        bottom: calc(100% + 4px);
+        gap: 2px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > span {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > p {
+        width: min(360px, calc(100vw - 16px));
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+@media (min-height: 840px) {
+    body.narrreview-narratia-theme #login-branding {
+        bottom: calc(100% + 8px);
+        gap: 4px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > span {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > p {
+        width: min(420px, calc(100vw - 32px));
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+@media (min-height: 1000px) {
+    body.narrreview-narratia-theme #login-branding {
+        bottom: calc(100% + 12px);
+    }
+
+    body.narrreview-narratia-theme #login-branding > span {
+        font-size: 32px;
+        line-height: 38px;
+    }
+
+    body.narrreview-narratia-theme #login-branding > p {
+        width: min(480px, calc(100vw - 32px));
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+body.narrreview-narratia-theme #topTitle {
+    font-size: 32px;
+    /* Override only the existing inline 90% title leading. */
+    line-height: 38px !important;
+    white-space: normal;
+}
+
+body.narrreview-narratia-theme #introDiv > div[onclick] h2.subjectName {
+    color: var(--nr-ink-muted);
+    font-size: 18px;
+    line-height: 26px;
+    font-style: normal;
+    white-space: normal;
+}
+
+/* Keep the JS height target, without spacing for the removed subject choices. */
+body.narrreview-narratia-theme #topDiv:empty {
+    /* Existing handlers still assign inline percentage heights to this node. */
+    height: 0 !important;
+    margin: 0;
+    padding: 0;
+}
+
+body.narrreview-narratia-theme #otherSearch > h2.subjectName {
+    /* The longer label must wrap rather than retain the inline 200% size. */
+    font-size: 18px !important;
+    line-height: 26px;
+    white-space: normal;
+}
+
+/*
+ * The Librarian typography: unmodified official Adobe WOFF2 distributions.
+ * Source Serif: 80d3f8894c09c937bebfa9011247d2e1c79fd6f4 (font v4.005).
+ * Source Sans: 87b37a2daaed80fcb8e8ccb0085c4d72ddade12e (font v3.052).
+ * Copyright/OFL notices accompany the fonts in assets/fonts/the-librarian/.
+ * CSS family names below alias the upstream variable-face internal names.
+ */
+@font-face {
+    font-family: "Source Serif 4";
+    src: url("../assets/fonts/the-librarian/SourceSerif4Variable-Roman.ttf.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../assets/fonts/the-librarian/SourceSans3VF-Upright.ttf.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400 800;
+    /* Avoid late UI reflow after legacy truncation and textarea fitting. */
+    font-display: optional;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../assets/fonts/the-librarian/SourceSans3VF-Italic.ttf.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 400 800;
+    font-display: optional;
+}
+
+body.narrreview-narratia-theme,
+body.narrreview-narratia-editor {
+    --nr-font-editorial: "Source Serif 4", "Noto Serif", Georgia, serif;
+    --nr-font-ui: "Source Sans 3", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* App-owned home regions, including dynamically populated tables and dialogs. */
+body.narrreview-narratia-theme :is(#auth-div, #introDiv, .modal-content),
+body.narrreview-narratia-theme > .dropdown,
+body.narrreview-narratia-theme > p,
+body.narrreview-narratia-theme :is(#introDiv, #narratives-menu, #account-menu) .data {
+    font-family: var(--nr-font-ui);
+}
+
+body.narrreview-narratia-theme #login-branding > span,
+body.narrreview-narratia-theme #topTitle {
+    font-family: var(--nr-font-editorial);
+}
+
+/* Do not assign a body-wide family: preview/viewer/plugin roots stay isolated. */
+body.narrreview-narratia-editor :is(#header, #leftNav, #controls, #workspace, #event-type-container, #sidebar, #auth-div, #bootstrap-progress-card, .modal-content),
+body.narrreview-narratia-editor :is(#controls, #inputDiv, #timeline, #bottomTimeline, #overlay, #dropdown-menu-header) .data,
+body.narrreview-narratia-editor .data.ui-draggable-dragging,
+body.narrreview-narratia-editor .timelineEvent,
+body.narrreview-narratia-editor #sidebar .relation,
+body.narrreview-narratia-editor #bigName,
+body.narrreview-narratia-editor > .popover,
+body.narrreview-narratia-editor :is(#container, #header) .popover {
+    font-family: var(--nr-font-ui);
+}
+
+body.narrreview-narratia-editor #SMBVT {
+    font-family: var(--nr-font-editorial);
+}
+
+/* Bootstrap tooltips inside app regions; detached preview tooltips are untouched. */
+body.narrreview-narratia-theme :is(#auth-div, #introDiv, .modal-content) .tooltip,
+body.narrreview-narratia-editor :is(#header, #leftNav, #controls, #workspace, #sidebar, .modal-content, .popover) .tooltip {
+    font-family: var(--nr-font-ui);
+}
+
+/* A wider serif fallback must not wrap the name beside the compact logo. */
+@media (max-height: 600px) {
+    body.narrreview-narratia-theme #login-branding > span {
+        font-family: "Source Serif 4", var(--nr-font-ui);
+    }
+}
+
+/* Home proportions: keep the existing search DOM and Typeahead anchor intact. */
+@media (max-width: 767px) {
+    body.narrreview-narratia-theme #otherSearch {
+        display: block !important;
+        width: calc(100% - 32px) !important;
+    }
+
+    body.narrreview-narratia-theme #otherSearch > h2.subjectName {
+        display: block !important;
+        text-align: left;
+        margin-bottom: 8px !important;
+    }
+
+    body.narrreview-narratia-theme #otherSearch > div {
+        display: block !important;
+        width: 100%;
+    }
+
+    body.narrreview-narratia-theme #otherSearch > div > .twitter-typeahead {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    body.narrreview-narratia-theme #otherSearch #wd-search {
+        width: 100% !important;
+    }
+}
+
+/* Preserve complete import feedback within the existing flex layout/width cap. */
+body.narrreview-narratia-theme #json-import-status {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Icon semantics: dismissal and unlinking are neutral, saved deletion is red. */
+body.narrreview-narratia-editor :is(.popover .js-close-popover, #digobjTable .digObjDeleteButton, #sidebar .relationship-unlink) {
+    color: var(--nr-ink);
+    background-color: transparent;
+    border-color: var(--nr-line-strong);
+}
+
+body.narrreview-narratia-editor :is(.popover .js-close-popover, #digobjTable .digObjDeleteButton, #sidebar .relationship-unlink):is(:hover, :active) {
+    color: var(--nr-accent-hover);
+    background-color: var(--nr-surface-sunken);
+}
+
+body.narrreview-narratia-theme .modal-content > .modal-header > .close,
+body.narrreview-narratia-editor .modal-content > .modal-header > .close {
+    opacity: 1;
+}
+
+body.narrreview-narratia-theme .modal-content > .modal-header > .close:is(:hover, :focus-visible),
+body.narrreview-narratia-editor .modal-content > .modal-header > .close:is(:hover, :focus-visible) {
+    opacity: 1;
+    color: var(--nr-accent-hover);
+}
+
+body.narrreview-narratia-editor #event-form .tooltips {
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #event-form .tooltips:is(:hover, :focus-visible) {
+    color: var(--nr-accent-hover);
+}
+
+/* Stable desktop target in the existing narrative-table action column. */
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    border: 1px solid var(--nr-status-closed);
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control:active {
+    background-color: var(--nr-status-closed);
+    color: var(--nr-on-accent);
+}
+
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control > .fa,
+body.narrreview-narratia-theme #narratives-menu .deleteButton > .x > .fa,
+body.narrreview-narratia-editor .deleteButton > .x > .fa-solid {
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+body.narrreview-narratia-editor :is(.deleteButton[role="button"], .js-close-popover[role="button"]):focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+/*
+ * Faithful button integration (captured Narratia, not a new button system).
+ * Reference: design-reference/project/ds/narratia/components/bundle.css:
+ * .n-btn, --sm, --lg, --primary, --secondary, --quiet, --danger;
+ * nested-radius rules and [data-register=studio] .n-btn overrides.
+ * tokens.json: type/Text/label, radius-nested, studio-control, duration-fast.
+ * Keep dense editor metrics, borders' widths, icon sizes and loading children.
+ * No runtime, disabled semantics, display or pointer-event changes.
+ */
+
+/* Nested general buttons: small actions, not the fixed desktop toolbars. */
+body.narrreview-narratia-theme #json-import-form :is(.json-file-label, #json-import-button),
+body.narrreview-narratia-theme .modal-content .modal-footer > button:is(.btn-primary, .btn-secondary),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button:is(.btn-primary, .btn-secondary) {
+    min-height: 36px;
+    padding: 0 16px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    font: 600 14px/20px var(--nr-font-ui);
+    letter-spacing: .005em;
+    box-shadow: none;
+    background-image: none;
+}
+
+/* The file trigger is a label, so center its line without changing semantics. */
+body.narrreview-narratia-theme #json-import-form .json-file-label {
+    line-height: 33px;
+}
+
+/* Large reference type, but retain legacy login-card heights and widths. */
+body.narrreview-narratia-theme #auth-form #authButton,
+body.narrreview-narratia-editor #auth-form #authButton {
+    font: 600 17px/20px var(--nr-font-ui);
+    letter-spacing: .005em;
+    border-radius: 8px;
+    border-color: transparent !important;
+    box-shadow: none;
+    background-image: none;
+}
+
+body.narrreview-narratia-theme #json-import-form #json-import-button,
+body.narrreview-narratia-theme .modal-content .modal-footer > button.btn-primary,
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button.btn-primary {
+    border-color: transparent !important;
+    background-image: none;
+    box-shadow: none;
+}
+
+/* General secondary: transparent ground, strong control edge, ink hover edge. */
+body.narrreview-narratia-theme #json-import-form .json-file-label,
+body.narrreview-narratia-theme .modal-content .modal-footer > button.btn-secondary,
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button.btn-secondary {
+    background-color: transparent !important;
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink) !important;
+}
+
+body.narrreview-narratia-theme #json-import-form .json-file-label:is(:hover, :active),
+body.narrreview-narratia-theme .modal-content .modal-footer > button.btn-secondary:is(:hover, :active),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button.btn-secondary:is(:hover, :active) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: var(--nr-ink);
+}
+
+/* Studio surface/shape only: existing 50px/44px toolbar geometry is retained. */
+body.narrreview-narratia-editor :is(#addButton, #saveButton, #cancelButton, #visMapButton, #settingsDropdown, #helpStorymap, #exportOWLButton, #exportButton, #publish-story-container, #account-btn, #home),
+body.narrreview-narratia-editor :is(#event-type-buttons, #three-d-event-options) > button {
+    border-radius: 20px;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* Home navigation is secondary; the adjacent #userName is only a status label. */
+body.narrreview-narratia-theme :is(#home, #userMenu).top-btn {
+    background-color: transparent !important;
+    border-color: var(--nr-line-strong) !important;
+    color: var(--nr-ink) !important;
+    box-shadow: none;
+}
+
+body.narrreview-narratia-theme :is(#home, #userMenu).top-btn:is(:hover, :active, .active) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: var(--nr-ink) !important;
+    color: var(--nr-ink) !important;
+}
+
+/* Studio secondary: tonal, without an outline. Never compete with Save Event. */
+body.narrreview-narratia-editor :is(#addButton, #cancelButton, #visMapButton, #exportOWLButton, #exportButton, #publish-story-container, #account-btn, #home):not(.disabledButton),
+body.narrreview-narratia-editor :is(#event-type-buttons, #three-d-event-options) > button:not(.disabledButton):not(:disabled) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: transparent !important;
+    color: var(--nr-ink) !important;
+}
+
+/* The reference secondary hover uses ink at the edge; keep border geometry. */
+body.narrreview-narratia-editor :is(#addButton, #cancelButton, #visMapButton, #exportOWLButton, #exportButton, #publish-story-container, #account-btn, #home):not(.disabledButton):is(:hover, :active),
+body.narrreview-narratia-editor :is(#event-type-buttons, #three-d-event-options) > button:not(.disabledButton):not(:disabled):is(:hover, :active) {
+    border-color: var(--nr-ink) !important;
+}
+
+/* Quiet utilities; preserve compact icon hit areas and Font Awesome metrics. */
+body.narrreview-narratia-editor :is(#settingsDropdown, #helpStorymap, #buttonSaveTitle, #cover-page),
+body.narrreview-narratia-editor :is(#settingsDropdown, #helpStorymap, #buttonSaveTitle, #cover-page):focus-visible {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: var(--nr-ink) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+body.narrreview-narratia-editor :is(#settingsDropdown, #helpStorymap, #buttonSaveTitle, #cover-page):is(:hover, :active) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: transparent !important;
+    color: var(--nr-ink) !important;
+}
+
+/* Correct the legacy link's explicit blue; the containing Help surface is quiet. */
+body.narrreview-narratia-editor #helpStorymap_aTag {
+    color: var(--nr-ink);
+}
+
+/* Dense filters keep their widths/heights/type; borrow the Studio pill shape. */
+body.narrreview-narratia-editor #leftNav > .nav {
+    border-radius: 17px;
+    border-color: transparent;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* Preserve existing selected classes and their inverse ink/fill relationship. */
+body.narrreview-narratia-editor #central-nav #addButton.add-button-active,
+body.narrreview-narratia-editor #leftNav > .nav.add-button-active-entities {
+    background-color: var(--nr-accent) !important;
+    border-color: transparent !important;
+    color: var(--nr-on-accent) !important;
+}
+
+/* Form actions: nested radius only; input-group and upload metrics stay put. */
+body.narrreview-narratia-editor #event-form :is(#load-sketchfab-model, #load-aton-model, #selectEventLocalBackgroundImage, #selectEventLocalImage, #digObjButton, #openPopupSearchCoordinates, #openPopupDrawPolygon, .remove-image) {
+    border-radius: 8px !important;
+    background-image: none;
+    box-shadow: none;
+}
+
+/* Danger is outlined red, not an inverse red primary. Retain all icon targets. */
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control,
+body.narrreview-narratia-theme #narratives-menu .deleteButton,
+body.narrreview-narratia-editor :is(#sidebar .deleteButton:not(.relationship-unlink), #narratives-menu .deleteButton) {
+    background-color: transparent;
+    border-color: var(--nr-status-closed);
+    color: var(--nr-status-closed);
+}
+
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control {
+    border-radius: 8px;
+}
+
+body.narrreview-narratia-theme #dataTable button.narrative-delete-control:is(:hover, :active),
+body.narrreview-narratia-theme #narratives-menu .deleteButton:is(:hover, :active),
+body.narrreview-narratia-editor :is(#sidebar .deleteButton:not(.relationship-unlink), #narratives-menu .deleteButton):is(:hover, :active) {
+    background-color: var(--nr-status-closed-soft);
+    color: var(--nr-status-closed);
+}
+
+/* Narratia's .45 disabled opacity; retain native and app-controlled guards. */
+body.narrreview-narratia-theme :is(#authButton, #json-import-button, .modal-footer > button.btn):is(:disabled, .disabled, [aria-disabled="true"]),
+body.narrreview-narratia-editor :is(#authButton, #central-nav .nav, #leftNav > .nav, #event-type-buttons > button, #three-d-event-options > button, .modal-content .modal-footer > button.btn):is(:disabled, .disabled, .disabledButton, [aria-disabled="true"]) {
+    opacity: .45;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Keyboard outlines cost no space and do not turn non-native controls focusable. */
+body.narrreview-narratia-theme :is(#authButton, #json-import-button, .modal-content .modal-footer > button):focus-visible,
+body.narrreview-narratia-editor :is(#header, #leftNav, #event-type-container, .modal-content .modal-footer) :focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+/* Explicit permanent-delete confirmations, using the verified Narratia danger. */
+body.narrreview-narratia-theme .modal-content .modal-footer > button.btn-primary.nr-confirm-danger:not(:disabled):not(.disabled):not([aria-disabled="true"]),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button.btn-primary.nr-confirm-danger:not(:disabled):not(.disabled):not([aria-disabled="true"]) {
+    background-color: transparent !important;
+    border-color: var(--nr-status-closed) !important;
+    color: var(--nr-status-closed) !important;
+}
+
+body.narrreview-narratia-theme .modal-content .modal-footer > button.btn-primary.nr-confirm-danger:not(:disabled):not(.disabled):not([aria-disabled="true"]):is(:hover, :active),
+body.narrreview-narratia-editor :is(#auth-div, .modal-content) .modal-footer > button.btn-primary.nr-confirm-danger:not(:disabled):not(.disabled):not([aria-disabled="true"]):is(:hover, :active) {
+    background-color: var(--nr-status-closed-soft) !important;
+}
+
+/* New Event's current-mode class already blocks activation; retain its full ink. */
+body.narrreview-narratia-editor #central-nav #addButton.add-button-active:not(.disabledButton) {
+    opacity: 1;
+}
+
+/*
+ * Option B: compact filters and readable records, within existing panel widths.
+ * Captured Narratia bundle.css: .n-pill (34px, 14/20, 17px radius),
+ * .n-rl--sans .n-rl__text (600 14/20), .n-rl__meta (13/18),
+ * .n-rl--compact .n-rl__row (8px block padding, 12px radius).
+ * Keep direct children, inline-block item display and JS-owned visibility.
+ */
+body.narrreview-narratia-editor #leftNav {
+    padding: 4px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body.narrreview-narratia-editor #leftNav > .nav {
+    width: 100%;
+    height: 34px;
+    margin: 0 0 4px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+body.narrreview-narratia-editor #leftNav > .nav > span {
+    padding: 6px 4px;
+    overflow-wrap: anywhere;
+}
+
+body.narrreview-narratia-editor #leftNav > .toggle-btn-entities:not(.disabledButton):not([disabled]):not([aria-disabled="true"]):not(.add-button-active-entities) {
+    background-color: transparent !important;
+}
+
+body.narrreview-narratia-editor #leftNav > .toggle-btn-entities:not(.disabledButton):not([disabled]):not([aria-disabled="true"]):not(.add-button-active-entities):is(:hover, :active) {
+    background-color: var(--nr-surface-sunken) !important;
+    border-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #leftNav > .toggle-btn-entities.add-button-active-entities {
+    font-weight: 600;
+}
+
+body.narrreview-narratia-editor #leftNav > :is(#entities-title, #new-entity-title) {
+    width: auto;
+    margin: 8px 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+}
+
+body.narrreview-narratia-editor #leftNav > #new-entity-title {
+    margin-top: 16px;
+}
+
+body.narrreview-narratia-editor #leftNav > #plusButton {
+    height: 40px;
+    border-color: var(--nr-line-strong);
+    border-radius: 20px;
+}
+
+body.narrreview-narratia-editor #controls {
+    min-width: 0;
+    padding: 12px;
+    text-align: left;
+}
+
+body.narrreview-narratia-editor #controls > #entities {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+body.narrreview-narratia-editor #controls > #entity-search-label {
+    display: block;
+    margin: 0 0 4px;
+    border: 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+body.narrreview-narratia-editor #controls > #searchInput {
+    width: 100% !important;
+    max-width: 100%;
+    height: 40px;
+    margin: 0 0 8px;
+    padding: 0 12px;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+body.narrreview-narratia-editor #controls > #entity-scope {
+    margin: 0 0 12px;
+    color: var(--nr-ink-muted);
+    font-size: 13px;
+    line-height: 18px;
+}
+
+body.narrreview-narratia-editor #controls > #entity-scope:empty {
+    display: none;
+}
+
+body.narrreview-narratia-editor #controls > :is(#entities-not-selected, #no-entities) {
+    position: static;
+    width: auto;
+    padding: 24px 0;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    transform: none;
+}
+
+body.narrreview-narratia-editor #controls > #data-container {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Preview rules follow body-level helpers, without restyling form/sidebar chips. */
+body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record,
+body.narrreview-narratia-editor > .data.nr-entity-record.nr-entity-drag-preview {
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    min-height: 56px;
+    margin: 2px 0;
+    padding: 8px 12px;
+    border-color: transparent;
+    border-radius: 12px;
+    background-color: var(--nr-surface-raised) !important;
+    color: var(--nr-ink) !important;
+    font-family: var(--nr-font-ui);
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    cursor: grab;
+    transform: none;
+    transition: background-color 160ms cubic-bezier(.2, 0, 0, 1);
+}
+
+body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record:hover {
+    background-color: var(--nr-surface-sunken) !important;
+    transform: none;
+}
+
+body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record:active {
+    cursor: grabbing;
+}
+
+body.narrreview-narratia-editor .data.nr-entity-record > .nr-entity-name {
+    display: -webkit-box;
+    max-height: 40px;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+body.narrreview-narratia-editor .data.nr-entity-record > .nr-entity-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+    margin-top: 2px;
+    color: var(--nr-ink-muted);
+    font-size: 13px;
+    line-height: 18px;
+    overflow-wrap: anywhere;
+}
+
+body.narrreview-narratia-editor .data.nr-entity-record .nr-entity-id {
+    min-width: 0;
+}
+
+/* Keyboard readers can inspect the whole name without relying on a tooltip. */
+body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record:focus-visible > .nr-entity-name {
+    display: block;
+    max-height: none;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.narrreview-narratia-editor #controls #data-container > .data.nr-entity-record {
+        transition: none;
+    }
+}
+
+/*
+ * Local horizontal classes: only the entity-browsing column has a filter bar.
+ * The editor and event sidebar remain top-aligned, outside that column.
+ * Divide the width left after explicit gutters in the ratio 32 : 48 : 20.
+ * Keep #container/mode-panel display JS-owned for preview transitions.
+ */
+body.narrreview-narratia-editor #container.entity-column-layout {
+    height: calc(100vh - 182px);
+    padding: 0 12px;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > #entity-browsing-column {
+    display: flex;
+    flex: 32 1 0;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    height: 100%;
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > :is(#event-type, #workspace) {
+    flex: 48 1 0;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    overflow: auto;
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > #workspace {
+    height: 100%;
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > #sidebar {
+    flex: 20 1 0;
+    min-width: 0;
+    width: auto;
+    height: 100%;
+    margin: 0;
+}
+
+/* Natural height; all sixteen original filter nodes remain direct siblings. */
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 8px;
+    border: 0;
+    border-radius: 12px;
+    overflow: visible;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav > #entities-title {
+    flex: 0 0 100%;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav > .toggle-btn-entities {
+    display: inline-flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+    max-width: 100%;
+    width: auto;
+    min-height: 34px;
+    height: auto;
+    margin: 0;
+    padding: 6px 8px;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav > .toggle-btn-entities > span {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Keep the existing scroll owner and its popover-dismissal handlers. */
+body.narrreview-narratia-editor #entity-browsing-column > #controls {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    /* Extra filter wrapping may grow the page, never clip classes or search. */
+    min-height: 260px;
+    height: auto;
+    margin: 0;
+    padding: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-padding-top: 168px;
+    isolation: isolate;
+}
+
+/* Search stays visible while this same panel scrolls; no extra list scroller. */
+body.narrreview-narratia-editor #entity-browsing-column #controls > #entity-browser-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin: 0 0 8px;
+    padding: 4px 0 8px;
+    border-bottom: 1px solid var(--nr-line);
+    background-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor #entity-browser-header > .entity-controls-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 40px;
+    margin: 0 0 8px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #entities {
+    min-width: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #new-entity-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #plusButton {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-height: 40px;
+    height: auto;
+    margin: 0;
+    padding: 6px 12px;
+    border-color: var(--nr-line-strong);
+    border-radius: 20px;
+    background-color: var(--nr-surface-raised);
+    color: var(--nr-ink);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #plusButton > span {
+    display: block;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #plusButton:is(:hover, :active) {
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #entity-browser-header #plusButton:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header #plusButton:is(.disabledButton, [disabled], [aria-disabled="true"]) {
+    opacity: .45;
+    cursor: not-allowed;
+    background-color: var(--nr-surface-sunken);
+    border-color: var(--nr-line-strong);
+    color: var(--nr-ink-muted);
+}
+
+/* Re-scope the existing search styling after the header-only wrapper move. */
+body.narrreview-narratia-editor #entity-browser-header > #entity-search-label {
+    display: block;
+    margin: 0 0 4px;
+    border: 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header > #searchInput {
+    width: 100% !important;
+    max-width: 100%;
+    height: 40px;
+    margin: 0 0 8px;
+    padding: 0 12px;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header > #entity-scope {
+    margin: 0;
+    color: var(--nr-ink-muted);
+    font-size: 13px;
+    line-height: 18px;
+}
+
+body.narrreview-narratia-editor #entity-browser-header > #entity-scope:empty {
+    display: none;
+}
+
+/* The legacy 100px chooser must use the same available height as the workspace. */
+body.narrreview-narratia-editor #container.entity-column-layout > #event-type {
+    height: 100%;
+    min-height: 0;
+}
+
+/* One scroll owner: the outer chooser. The inner card fills, then grows naturally. */
+body.narrreview-narratia-editor #container.entity-column-layout > #event-type > #event-type-container {
+    align-self: flex-start;
+    min-height: 100%;
+    height: auto;
+    justify-content: flex-start;
+    overflow: visible;
+}
+
+body.narrreview-narratia-editor #event-type > #event-type-container > #type-choice {
+    flex: 0 0 auto;
+    height: auto;
+}
+
+/* Flat compact filters: every class stays directly available above Entities. */
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav {
+    gap: 2px;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav > .toggle-btn-entities {
+    padding-inline: 6px;
+}
+
+/*
+ * Radio styling, phase 1: native inputs and native checked-state rendering.
+ * Narratia reference bundle.css .n-radio-dot: 24px circle, 2px strong edge;
+ * .n-radio: 12px label gap, 44px row; 2px focus ring with 2px offset.
+ * Native accent-color adapts the selected treatment; the browser owns its dot.
+ * No appearance reset, generated indicator, wrapper, display or state changes.
+ * Important width/margins counter legacy .radioButtons/.radioEntityBtn rules.
+ */
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+    #change-event-type-options input[type="radio"]
+) {
+    box-sizing: border-box;
+    width: 24px !important;
+    height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    padding: 0;
+    margin: 0 !important;
+    flex: 0 0 24px;
+    vertical-align: middle;
+    border: 2px solid var(--nr-line-strong);
+    border-radius: 50%;
+    color: var(--nr-ink);
+    accent-color: var(--nr-accent);
+    cursor: pointer;
+}
+
+/* Only labels immediately associated with these application-owned radios. */
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"]
+) + label[for] {
+    display: inline-block;
+    box-sizing: border-box;
+    min-height: 40px;
+    max-width: calc(100% - 40px);
+    margin: 0 0 0 12px !important;
+    padding: 10px 0;
+    border: 0;
+    vertical-align: middle;
+    text-align: left;
+    font-family: var(--nr-font-ui);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+/* Modal options use wrapping labels rather than an input + label pair. */
+body.narrreview-narratia-editor #change-event-type-options > label {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 0;
+    border: 0;
+    text-align: left;
+    font-family: var(--nr-font-ui);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+    #change-event-type-options input[type="radio"]
+):checked {
+    border-color: var(--nr-accent);
+}
+
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+    #change-event-type-options input[type="radio"]
+):not(:disabled):hover {
+    border-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+    #change-event-type-options input[type="radio"]
+):focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+/* Disabled opacity is a conservative adaptation; native disabled stays native. */
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+    #change-event-type-options input[type="radio"]
+):disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+body.narrreview-narratia-editor :is(
+    #event-form input.radioButtons[type="radio"],
+    #entity-choice input.radioEntityBtn[type="radio"],
+    .entityClassTypeDiv .class-type-options input[type="radio"],
+    [id^="popover-radio-div-"] input.radioButtons[type="radio"]
+):disabled + label[for] {
+    color: var(--nr-ink-muted);
+    cursor: not-allowed;
+}
+
+/* Retain system-native checked and disabled rendering in forced-colors mode. */
+@media (forced-colors: active) {
+    body.narrreview-narratia-editor :is(
+        #event-form input.radioButtons[type="radio"],
+        #entity-choice input.radioEntityBtn[type="radio"],
+        .entityClassTypeDiv .class-type-options input[type="radio"],
+        [id^="popover-radio-div-"] input.radioButtons[type="radio"],
+        #change-event-type-options input[type="radio"]
+    ) {
+        accent-color: auto;
+        opacity: 1;
+    }
+}
+
+/*
+ * Narratia Studio panel adaptation. Verified local reference bundle.css:
+ * .n-studio__rail (quiet flex column), .n-studio__sheet (raised white,
+ * radius 28px, shadow-raise), .n-insp (radius 28px, opaque fallback),
+ * .n-insp__body (28px padding), .n-rl--compact (12px row radius).
+ * Keep Librarian flex weights, heights, display transitions and scroll owners.
+ * Dense event collections use opaque surfaces, without inspector glass/blur.
+ */
+
+/* Rail: one quiet surface; the record browser is not another bordered card. */
+body.narrreview-narratia-editor #container.entity-column-layout > #entity-browsing-column {
+    background-color: var(--nr-surface-sunken);
+    color: var(--nr-ink);
+    border-radius: 28px;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #leftNav {
+    background-color: transparent;
+    border-radius: 0;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column > #controls {
+    border-color: transparent;
+    border-radius: 0 0 28px 28px;
+    background-color: var(--nr-surface-sunken);
+}
+
+body.narrreview-narratia-editor #entity-browsing-column #controls > #entity-browser-header {
+    background-color: var(--nr-surface-sunken);
+    border-bottom-color: var(--nr-line);
+}
+
+/* Existing record dimensions and selection/focus rings are kept. */
+body.narrreview-narratia-editor #entity-browsing-column #controls #data-container > .data.nr-entity-record {
+    background-color: transparent !important;
+}
+
+body.narrreview-narratia-editor #entity-browsing-column #controls #data-container > .data.nr-entity-record:is(:hover, :focus-visible) {
+    background-color: var(--nr-surface-raised) !important;
+}
+
+/* Sheet: adopt the actual panel radius and light shadow, without clipping. */
+body.narrreview-narratia-editor #container.entity-column-layout > :is(#workspace, #event-type) {
+    border-radius: 28px;
+    background-color: var(--nr-surface-raised);
+    color: var(--nr-ink);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 8px 24px -12px rgba(0, 0, 0, .18);
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > #workspace {
+    border-color: transparent;
+    padding: 20px 16px 24px;
+    scroll-padding-block: 20px;
+}
+
+body.narrreview-narratia-editor #container.entity-column-layout > #event-type > #event-type-container {
+    border-color: transparent;
+    border-radius: 28px;
+    padding: 20px 16px 24px;
+    background-color: var(--nr-surface-raised);
+}
+
+body.narrreview-narratia-editor #workspace > #form-title,
+body.narrreview-narratia-editor #event-type-container > #event-type-title {
+    margin: 0 0 8px;
+    color: var(--nr-ink);
+    font-family: var(--nr-font-editorial);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: -.01em;
+}
+
+body.narrreview-narratia-editor #workspace > #mandatory-fields-text {
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+/* Inspector: opaque fallback is appropriate to this long event collection. */
+body.narrreview-narratia-editor #container.entity-column-layout > #sidebar {
+    padding: 20px 12px 24px;
+    border-radius: 28px;
+    background-color: var(--nr-surface-raised);
+    color: var(--nr-ink);
+    box-shadow: inset 0 0 0 1px var(--nr-line);
+    text-align: left;
+    scroll-padding-block: 12px;
+}
+
+body.narrreview-narratia-editor #sidebar > #sidebar-title {
+    width: auto;
+    margin: 0 0 12px;
+    color: var(--nr-ink);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: left;
+}
+
+body.narrreview-narratia-editor #sidebar > #event-counter {
+    margin-block: 12px;
+    color: var(--nr-ink-muted);
+    font-size: 13px;
+    line-height: 18px;
+}
+
+/* Use the inspector's available row width; keep 90px event-card heights. */
+body.narrreview-narratia-editor #sidebar > #timeline {
+    width: 100%;
+    margin-top: 12px;
+    padding: 4px;
+    background-color: transparent;
+}
+
+body.narrreview-narratia-editor #sidebar #timeline > .timelineEvent {
+    margin-right: 0;
+    margin-bottom: 8px;
+    border-color: transparent;
+    border-radius: 12px;
+    background-color: transparent !important;
+    box-shadow: none;
+    transform: none;
+    transition: background-color 160ms cubic-bezier(.2, 0, 0, 1);
+}
+
+body.narrreview-narratia-editor #sidebar #timeline > .timelineEvent:is(:hover, .timelineEvent--current) {
+    background-color: var(--nr-surface-sunken) !important;
+    box-shadow: none;
+    transform: none;
+}
+
+body.narrreview-narratia-editor #sidebar #timeline > .timelineEvent.timelineEvent--current {
+    border-color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #sidebar #timeline > .timelineEvent:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.narrreview-narratia-editor #sidebar #timeline > .timelineEvent {
+        transition: none;
+    }
+}
+
+/* The event sidebar collapses into a navigation rail, not a hidden list. */
+body.narrreview-narratia-editor #container.entity-sidebar-collapsed > #entity-browsing-column {
+    /* Same 32% share of the row width remaining after the 24px gutters/gaps. */
+    flex: 0 0 calc(32% - 7.68px);
+}
+
+body.narrreview-narratia-editor #container.entity-sidebar-collapsed > :is(#workspace, #event-type) {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+
+body.narrreview-narratia-editor #sidebar.is-collapsed {
+    display: flex;
+    flex: 0 0 64px;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 64px;
+    width: 64px;
+    min-height: 0;
+    padding: 6px;
+    overflow: visible;
+    border-radius: 20px;
+}
+
+body.narrreview-narratia-editor #sidebar > .event-sidebar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+    margin-bottom: 8px;
+}
+
+body.narrreview-narratia-editor #sidebar .event-sidebar-heading > #sidebar-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    text-align: left;
+}
+
+body.narrreview-narratia-editor #event-sidebar-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px 10px;
+    border: 1px solid var(--nr-line-strong);
+    border-radius: 20px;
+    background: var(--nr-surface-raised);
+    color: var(--nr-ink);
+    font: 600 13px/18px var(--nr-font-ui);
+    cursor: pointer;
+}
+
+body.narrreview-narratia-editor #event-sidebar-toggle:is(:hover, :active) {
+    border-color: var(--nr-ink);
+    background: var(--nr-surface-sunken);
+}
+
+body.narrreview-narratia-editor #event-sidebar-toggle:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
+}
+
+body.narrreview-narratia-editor #event-sidebar-toggle i {
+    flex: 0 0 auto;
+}
+
+body.narrreview-narratia-editor #sidebar:not(.is-collapsed) #timeline > .timelineEvent > .event-compact-number {
+    display: none;
+}
+
+body.narrreview-narratia-editor .timelineEventDragHelper .event-compact-number {
+    display: none !important;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed {
+    justify-content: flex-start;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed > .event-sidebar-heading {
+    justify-content: center;
+    margin: 0 0 6px;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed > .event-sidebar-heading > #sidebar-title,
+body.narrreview-narratia-editor #sidebar.is-collapsed > #eventSearchDiv,
+body.narrreview-narratia-editor #sidebar.is-collapsed > #event-counter,
+body.narrreview-narratia-editor #sidebar.is-collapsed > #overlay,
+body.narrreview-narratia-editor #sidebar.is-collapsed > #bottomTimeline,
+body.narrreview-narratia-editor #sidebar.is-collapsed > #relHelpContainer {
+    display: none !important;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #event-sidebar-toggle {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    padding: 6px;
+    border-radius: 12px;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #event-sidebar-toggle-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Compact sequence rail uses the existing timeline and owns its scroll. */
+body.narrreview-narratia-editor #sidebar.is-collapsed > #timeline {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: auto !important;
+    max-height: none;
+    margin: 0;
+    padding: 2px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: normal;
+    text-align: center;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent {
+    display: flex !important;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: 40px;
+    height: 40px !important;
+    margin: 0 0 4px;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 12px;
+    background: transparent !important;
+    color: var(--nr-ink);
+    box-shadow: none !important;
+    text-align: center;
+    cursor: default;
+    transform: none !important;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .titleHeading,
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .dateHeading,
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .eventBottom,
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .deleteButton {
+    display: none !important;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .event-compact-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    color: var(--nr-ink-muted);
+    font: 600 13px/18px var(--nr-font-ui);
+    cursor: pointer;
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent:hover .event-compact-number {
+    background: var(--nr-surface-sunken);
+    color: var(--nr-ink);
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent.timelineEvent--current .event-compact-number {
+    background: var(--nr-accent);
+    color: var(--nr-on-accent);
+}
+
+body.narrreview-narratia-editor #sidebar.is-collapsed #timeline > .timelineEvent .event-compact-number:focus-visible {
+    outline: 2px solid var(--nr-focus);
+    outline-offset: 2px;
 }

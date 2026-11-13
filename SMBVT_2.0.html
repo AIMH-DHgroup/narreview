@@ -5,6 +5,8 @@
     
 	<meta charset="UTF-8">
     <title>Narrative Tool</title>
+    <link rel="preload" href="assets/fonts/the-librarian/SourceSans3VF-Upright.ttf.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/the-librarian/SourceSerif4Variable-Roman.ttf.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="lib/narraintro.css" />
     <link rel="icon" href="data:;base64,iVBORwOKGO=" />
@@ -103,7 +105,8 @@
 	<div id="auth-div" style="display: none;">
 		<div id="login-branding">
 			<img src="img/Narratia_logo.png" alt="Narratia" width="1027" height="252">
-			<span>Narreview</span>
+			<span>The Librarian</span>
+			<p>Refining graphs, shaping trustworthy stories.</p>
 		</div>
 		<form id="auth-form" class="form-signin">
 			<h2 class="form-signin-heading">Please sign in</h2>
@@ -122,41 +125,12 @@
     <div id="introDiv" >
         <div id="back" onclick="document.getElementById('topDiv').style.height = '52%'; $(this).fadeToggle();">BACK</div>
         <div onclick="document.getElementById('topDiv').style.height = '52%'; $('#back').fadeToggle();">
-            <h1 class="subjectName" id="topTitle" style="line-height: 90%">Build a Narrative</h1>
-            <i><h2 class="subjectName" style="margin-top: .3%">about...</h2></i>
+            <h1 class="subjectName" id="topTitle" style="line-height: 90%">The Librarian</h1>
+            <i><h2 class="subjectName" style="margin-top: .3%">Refining graphs, shaping trustworthy stories.</h2></i>
         </div>
-        <div id="topDiv">
-        <a href="toolNew.html?idwiki=Q1067" class="one-fifth">
-            <div class="personDiv" style="background-image: url(/images/dante.jpg); background-size: cover; background-position: center top; background-repeat: no-repeat;">
-                <span class="personName">Dante Alighieri<br></span>
-            </div>
-        </a>
-        <a href="toolNew.html?idwiki=Q55423213" class="one-fifth">
-            <div class="personDiv" style="background-image: url(/images/dolomiti.jpg); background-size: cover; background-position: right top; background-repeat: no-repeat;">
-                <span class="personName">Dolomites</span>
-            </div>
-        </a>
-        <a href="toolNew.html?idwiki=Q13133" class="one-fifth">
-            <div class="personDiv" style="background-image: url(/images/michelle.jpg); background-size: 180%; background-position: center top; background-repeat: no-repeat;">
-                <span class="personName">Michelle Obama</span>
-            </div>
-        </a>
-        <a href="toolNew.html?idwiki=Q204646" class="one-fifth">
-            <div class="personDiv" style="background-image: url(/images/squid.jpg); background-size: cover; background-position: center bottom; background-repeat: no-repeat;">
-                <span class="personName">Giant Squid</span>
-            </div>
-        </a>
-        <a href="toolNew.html?idwiki=Q23548" class="one-fifth">
-            <div class="personDiv" style="background-image: url(/images/nasa.jpg); background-size: cover; background-position: left top; background-repeat: no-repeat;">
-                <span class="personName">NASA</span>
-            </div>
-        </a>
-        <div style="margin: 0 auto; text-align: center; margin-top: 0; height: 14%">
-            <i style="height: 100%"><h2 class="subjectName" style="height: 100%; line-height: 90%">or...</h2></i>
-        </div>
-    </div>
+        <div id="topDiv"></div>
     <div id="otherSearch" style="display: block; margin: 0 auto; text-align: left; display: table; width: 60%; margin-top: .5%; margin-bottom: 0">
-        <h2 class="subjectName" style="align: left; font-size: 200%; border: none; vertical-align: middle; display: table-cell; padding: 0; margin: 0">Search for a different subject:&nbsp;</h2>
+        <h2 class="subjectName" style="align: left; font-size: 200%; border: none; vertical-align: middle; display: table-cell; padding: 0; margin: 0">Search a subject for a new narrative&nbsp;</h2>
         <div style="height: 100%; vertical-align: middle; display: table-cell; padding: 0; text-align: left">
             <input id="wd-search" class="typeahead" style="width: 500px; height: 100%; padding: 0; text-align: center; font-size: 16pt" autocomplete='off'>
                 <!-- onfocus="document.getElementById('topDiv').style.height = '0'; $('#back').fadeToggle();"> -->
@@ -168,7 +142,7 @@
 		<i><h2 class="subjectName">or...</h2></i>
 		<form id="json-import-form">
 			<span class="json-import-title">Create a narrative from JSON:</span>
-			<label for="json-narrative-file" class="btn btn-default json-file-label">Choose JSON</label>
+			<button id="json-file-button" class="btn btn-default json-file-label" type="button" aria-controls="json-narrative-file" aria-describedby="json-import-status">Choose JSON</button>
 			<input id="json-narrative-file" name="jsonFile" type="file" accept=".json,application/json" required>
 			<button id="json-import-button" class="btn btn-primary" type="submit">Create narrative</button>
 			<span id="json-import-status" aria-live="polite"></span>
@@ -178,7 +152,7 @@
     
     <div id="userDBs"><table id="dataTable"></table></div>
 </div>
-<p style="text-align: center; padding-bottom:2%; margin-top: 5%;">© 2017–2025 <a href="http://isti.cnr.it">ISTI-CNR</a>. Narreview <a target="_blank" href="https://dlnarratives.eu/terms_of_use.html">Terms of use</a>.<br/> Images from <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA 3.0</a> license.
+<p style="text-align: center; padding-bottom:2%; margin-top: 5%;">© 2017–2025 <a href="http://isti.cnr.it">ISTI-CNR</a>. The Librarian <a target="_blank" href="https://dlnarratives.eu/terms_of_use.html">Terms of use</a>.<br/> Images from <a href="https://commons.wikimedia.org">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA 3.0</a> license.
 	<br>Works best with recent versions of <a href="https://www.google.com/chrome/index.html">Google Chrome</a>, <a href="https://www.apple.com/lae/safari/">Apple Safari</a>, and <a href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a>.</p>
 </body>
 </html>

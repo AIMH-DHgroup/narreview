@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">	
     <title id="page-title">SMBVT Tool</title>
+    <link rel="preload" href="assets/fonts/the-librarian/SourceSans3VF-Upright.ttf.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/the-librarian/SourceSerif4Variable-Roman.ttf.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="lib/timeline.css" >
@@ -63,14 +65,14 @@
 	<div id="header">
 		<div id="logo-container">
 			<a href="SMBVT_2.0.html"><img id="logo" src="img/Narratia_logo.png" alt="Narratia" width="1027" height="252"></a>
-			<span id="SMBVT" class="not-selectable">Narreview</span>
+			<span id="SMBVT" class="not-selectable">The Librarian</span>
 		</div>
 		<div id="central-div-header">
 			<div id="event-title" class="js-hide-popovers">
 				<h2 class="subjectName" id="bigName">Narration Title</h2>
 				<div id="title-cover-page-div">
-					<button id="buttonSaveTitle" type="button"><i class="fa-solid fa-pen"></i></button>
-					<button type="button" id="cover-page" data-toggle='tooltip' data-original-title="Change the narrative cover image"><i class="fa-regular fa-image"></i></button>
+					<button id="buttonSaveTitle" type="button" aria-label="Edit narrative title"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+					<button type="button" id="cover-page" aria-label="Change cover image" data-toggle='tooltip' data-original-title="Change the narrative cover image"><i class="fa-regular fa-image" aria-hidden="true"></i></button>
 				</div>
 			</div>
 			<div id="central-nav">
@@ -138,36 +140,43 @@
 	<div id='timeline-embed'></div>
 	<div id="mapdiv"></div>
 
-	<div id="container" class="js-hide-popovers">
-        <div id="leftNav">
+	<div id="container" class="js-hide-popovers entity-column-layout">
+		<div id="entity-browsing-column" class="js-hide-popovers" role="region" aria-label="Entity browser">
+        <div id="leftNav" role="group" aria-labelledby="entities-title">
 			<h4 id="entities-title">Entity Classes</h4>
             <div class="nav toggle-btn-entities" id="allButton" data-class="all"><span>All</span></div>
             <div class="nav toggle-btn-entities" id="peopleButton" data-class="person"><span>People</span></div>
             <div class="nav toggle-btn-entities" id="fictionalCharacterButton" data-class="fictionalCharacter"><span>Fictional Character</span></div>
             <div class="nav toggle-btn-entities" id="organizationButton" data-class="organization"><span>Orgs</span></div>
-            <div class="nav toggle-btn-entities" id="objectButton" data-class="object"><span>Objects</span></div>
-            <div class="nav toggle-btn-entities" id="conceptButton" data-class="concept"><span>Concepts</span></div>
             <div class="nav toggle-btn-entities" id="placeButton" data-class="place"><span>Places</span></div>
+            <div class="nav toggle-btn-entities" id="siteButton" data-class="site"><span>Sites</span></div>
+            <div class="nav toggle-btn-entities" id="buildingButton" data-class="building"><span>Buildings</span></div>
+            <div class="nav toggle-btn-entities" id="castleButton" data-class="castle"><span>Castles</span></div>
+            <div class="nav toggle-btn-entities" id="churchButton" data-class="church"><span>Churches</span></div>
+            <div class="nav toggle-btn-entities" id="monasteryButton" data-class="monastery"><span>Monasteries</span></div>
             <div class="nav toggle-btn-entities" id="workButton" data-class="work"><span>Works</span></div>
-            <div class="nav toggle-btn-entities" id="otherButton" data-class="other"><span>Other</span></div>
             <div class="nav toggle-btn-entities" id="epigraphButton" data-class="epigraph"><span>Epigraphs</span></div>
             <div class="nav toggle-btn-entities" id="rockEngravingButton" data-class="rock engraving"><span>Rock Engravings</span></div>
-            <div class="nav toggle-btn-entities" id="siteButton" data-class="site"><span>Sites</span></div>
-            <div class="nav toggle-btn-entities" id="castleButton" data-class="castle"><span>Castles</span></div>
-            <div class="nav toggle-btn-entities" id="monasteryButton" data-class="monastery"><span>Monasteries</span></div>
-            <div class="nav toggle-btn-entities" id="churchButton" data-class="church"><span>Churches</span></div>
-            <div class="nav toggle-btn-entities" id="buildingButton" data-class="building"><span>Buildings</span></div>
-            <h4 id="new-entity-title">New Entity</h4>
-			<div class="nav" id="plusButton"><span>New</span></div>
+            <div class="nav toggle-btn-entities" id="objectButton" data-class="object"><span>Objects</span></div>
+            <div class="nav toggle-btn-entities" id="conceptButton" data-class="concept"><span>Concepts</span></div>
+            <div class="nav toggle-btn-entities" id="otherButton" data-class="other"><span>Other</span></div>
         </div>
 		<div id="controls" class="back js-hide-popovers">
-			<h4 id="entities">Entities</h4>
-			<label for="searchInput" style="display: none;"></label>
-			<input id="searchInput" placeholder="Search entities..." class="input-append" onkeyup="searchEntity();">
+			<div id="entity-browser-header" class="js-hide-popovers">
+				<div class="entity-controls-heading js-hide-popovers">
+					<h4 id="entities">Entities</h4>
+					<span id="new-entity-title" class="sr-only" aria-hidden="true">New Entity</span>
+					<div class="nav" id="plusButton"><span>New</span></div>
+				</div>
+			<label id="entity-search-label" for="searchInput">Search entities</label>
+			<input id="searchInput" placeholder="Search entities..." class="input-append" aria-describedby="entity-scope" onkeyup="searchEntity();">
+			<p id="entity-scope" role="status" aria-live="polite" aria-atomic="true"></p>
+			</div>
 			<span id="entities-not-selected">No selected class</span>
 			<span id="no-entities">No entities</span>
             <div class="spinner-loader"></div>
         </div>
+		</div>
 		<div id="event-type">
 			<div id="event-type-container" class="back">
 				<h4 id="event-type-title">Create a new event</h4>
@@ -318,7 +327,7 @@
 				<div id="digobjTable"></div>
 
 				<h5 id="image-title">Images and Video</h5>
-				<div class="form-group choose-media">
+				<div class="form-group choose-media" role="radiogroup" aria-labelledby="image-title">
 					<input type="radio" id="image-radio" class="radioButtons radioVideoBtn" name="media_type" value="image">
 					<label for="image-radio" class="radioButtonText">Image(s)</label><br>
 					<input type="radio" id="video-radio" class="radioButtons radioVideoBtn" name="media_type" value="video">
@@ -361,7 +370,7 @@
 					</div>
 				</div>
 				<div id="add-image">
-					<button id="add-image-icon" type="button"><i class="fa-solid fa-plus"></i></button><label for="add-image-icon" id="add-image-text">Add image</label>
+					<button id="add-image-icon" type="button"><i class="fa-solid fa-plus" aria-hidden="true"></i></button><label for="add-image-icon" id="add-image-text">Add image</label>
 				</div>
 
 				<h4 id="location-title">Event Location</h4>
@@ -376,7 +385,7 @@
 					<input type="hidden" id="mapZoomInput">
 				</div>
 				
-				<div class="form-group choose-coors" id="choose-coors">
+				<div class="form-group choose-coors" id="choose-coors" role="radiogroup" aria-labelledby="choose-coors-title">
 					<span id="choose-coors-title">Choose how to express coordinates (*)</span>
 					<input type="radio" id="point-radio" class="radioButtons radioCoorsBtn" name="coors-type" value="point">
 					<label for="point-radio" class="radioButtonText radioCoorsLabel">Point</label><br>
@@ -415,13 +424,13 @@
                  	<input autocomplete="off" id="placeLabel" class="input-append form-control"  style="font-size:14px; text-align: left !important;">
 				</div>
 
-				<div class="form-group" id="position-group">
+				<div class="form-group" id="position-group" role="group" aria-labelledby="position-title">
 					<h4 id="position-title">Event Position</h4>
 					<input type="radio" name="positionRadio" class="radioButtons" value="before" id="positionBefore">
 					<label class="radioButtonText" for="positionBefore">Before</label>
 					<input type="radio" name="positionRadio" class="radioButtons" value="after" id="positionAfter">
 					<label class="radioButtonText" for="positionAfter">After</label>
-					<label for="positionEvent" style="display: none;"></label>
+					<label for="positionEvent" class="sr-only">Reference event for positioning</label>
 					<select id="positionEvent" class="input-append form-control"></select>
 				</div>
 
@@ -429,7 +438,12 @@
         </div>
 
 		<div id="sidebar" class="js-hide-popovers">
-			<h4 id="sidebar-title">Events</h4>
+			<div class="event-sidebar-heading">
+				<h4 id="sidebar-title">Events</h4>
+				<button type="button" id="event-sidebar-toggle" aria-label="Collapse event sidebar" aria-expanded="true" aria-controls="timeline" title="Collapse event sidebar">
+					<i class="fa-solid fa-angles-right" aria-hidden="true"></i><span id="event-sidebar-toggle-label">Collapse</span>
+				</button>
+			</div>
 			<div id="eventSearchDiv" style="margin-top: 1.5%;text-align: center;">
 				<label for="eventSearch" style="display: none;"></label>
 				<input placeholder="Filter events" id="eventSearch" type="text" style="width:50%; border-radius:25px;">
